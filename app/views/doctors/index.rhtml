@@ -1,0 +1,56 @@
+  <h3>Lista de Doctores, metodo index</h3>
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Documento</th>
+        <th>Email</th>
+        <th>Telefono</th>
+		<th>Celular</th>
+		<th>Especialidad</th>
+		<th>Direccion</th>
+		<th>User Name</th>      
+		<th>Password</th>      
+      </tr>
+      <% @doctors.each do |doctor|%>
+        <tr>
+          <td>
+            <%= doctor.name %>
+          </td>
+          <td>
+            <%= doctor.lastName %>
+          </td> 
+		  <td>
+            <%= doctor.idDocument%>
+          </td> 
+		  <td>
+            <%= doctor.email%>
+          </td>  
+		  <td>
+            <%= doctor.phoneHome%>
+          </td>     
+		  <td>
+            <%= doctor.phoneCell%>
+          </td>
+		  <td>
+            <%= doctor.speciality%>
+          </td>
+		  <td>
+            <%= doctor.address%>
+          </td>     
+  		  <td>
+            <%= doctor.userName%>
+          </td>     
+		  <td>
+            <%= doctor.password%>
+          </td>  
+			<td><%= link_to 'Show', doctor_path(doctor) %></td>		  
+   		  <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
+    	  <td><%= link_to 'Delete',doctor_path(doctor),:confirm =>'are you sure?', :method => :delete%></td>
+        </tr>
+      <% end %>
+    </table>
+	<div>
+		<br>
+		<%= link_to "Nuevo doctor", new_doctor_path, :id => "new" %>
+	<div>

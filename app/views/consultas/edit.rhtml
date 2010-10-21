@@ -1,0 +1,8 @@
+<html>
+  <body>
+    <h2> Editar <%= @consulta.animal.name %></h2>
+    <% form_for @consulta, :url => consulta_path, :html => {:method => :put}  do |f| %>
+      <%= render :partial => "form_consulta", :locals => {:f => f}%>
+    <% end %>
+  </body>
+</html>

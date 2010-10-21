@@ -1,0 +1,55 @@
+<div>
+	<div>Nombre:</div>
+	<%= f.text_field :name %>
+</div>
+
+<div>
+	<div>Fecha de nacimiento:</div>
+	<%= f.date_select :birthDay%>
+</div>
+
+<div>
+	<div>Sexo:</div>
+	<div>Mujer
+		 <%= f.radio_button :sex, false%> 
+		 Hombre 
+		 <%= f.radio_button :sex, true%>
+	</div>
+</div>
+
+<div>
+	<div>Descripcion:</div>
+	<%= f.text_area :description, :cols => 20, :rows => 10%>
+</div>
+
+<div>
+	<div>Castrado:</div>
+	<div>No
+		 <%= f.radio_button :spayed, false%> 
+		 Si
+		 <%= f.radio_button :spayed, true%>
+	</div>
+</div>
+
+<div>
+	<div>Dieta:</div>
+	<%= f.text_area :diet, :cols => 20, :rows => 10%>
+</div>
+
+<div>
+	<div>Habitat:</div>
+	<%= f.text_field :habitat %>
+</div>
+
+<div>Raza:
+	<%= f.text_field :breed_id %>
+</div>
+
+<div>Cliente:
+	<%= f.text_field :client_id %>
+</div>
+
+<div>
+	<br>
+	<%= link_to "Atras", animals_path%>
+</div>

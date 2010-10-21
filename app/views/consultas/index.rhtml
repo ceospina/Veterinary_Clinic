@@ -1,0 +1,16 @@
+﻿		<h2>Lista de consultas, Metodo Index<h2>
+		<table>
+			<% @consultas.each do |consulta| %> 
+			<tr>  
+					<td><%= consulta.animal.name %></td> 
+					<td><%= consulta.doctor.name %></td> 
+					<td><%= consulta.typeConsult.name %></td>
+					<td><%= consulta.id %></td>
+					<td><%= link_to "Show", consulta %> </td> 
+					<td><%= link_to  "Edit", edit_consulta_path(consulta) %></td>  
+					<td><%= link_to "Delete", consulta, :confirm => "Are you sure?", :method=>:delete %></td>
+			</tr> 
+			<% end %> 
+		</table>
+		<br /> 
+		<%= link_to "New Consulta", new_consulta_path, :id => "new" %> 

@@ -1,0 +1,5 @@
+<h1>Un nuevo cliente</h1>
+<% form_for :client, :url => clients_path, :html => {:method => :post}  do |f|%>
+<%= render :partial => "form_client", :locals => {:f => f}%>
+<%= f.submit :salvar%>
+<% end %>

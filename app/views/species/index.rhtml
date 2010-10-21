@@ -1,0 +1,24 @@
+    <h3>Lista de Especies, metodo index</h3>
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+      </tr>
+      <% @species.each do |specie|%>
+        <tr>
+          <td>
+            <%= specie.name %>
+          </td>
+          <td>
+            <%= specie.description %>
+          </td> 
+		  <td><%= link_to 'Show', species_path(specie) %></td>		  
+   		  <td><%= link_to 'Edit', edit_species_path(specie) %></td>
+    	  <td><%= link_to 'Delete',species_path(specie),:confirm =>'are you sure?', :method => :delete%></td>
+        </tr>
+      <% end %>
+    </table>
+	<div>
+		<br>
+		<%= link_to "Nueva Especie", new_species_path, :id => "new" %>
+	<div>

@@ -1,0 +1,5 @@
+<h1>Nueva cita</h1>
+<% form_for :meeting, :url => meetings_path, :html => {:method => :post}  do |f|%>
+<%= render :partial => "form_meeting", :locals => {:f => f}%>
+<%= f.submit :salvar%>
+<% end %>

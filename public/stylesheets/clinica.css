@@ -1,0 +1,131 @@
+body {
+	background-color: #2531c2;;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+  margin: 100px 40px 10px 70px;
+  background-color: #FFF;
+  padding: 20px 20px 20px 20px; /*margen al interior del contenedor*/
+  border: solid 1px black;
+  margin-top: 20px;/**/
+}
+
+#Menu{
+	background: #b6cbc9;
+	width: auto;
+	height: auto;
+	padding: 10px 10px 10px 10px
+}
+
+#ensayo{
+	font-size: 12px;
+	background: #fff;
+	margin: 45px;
+	width: 480px;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+#ensayo th
+{
+	font-size: 14px;
+	font-weight: normal;
+	color: #039;
+	padding: 10px 8px;
+	border-bottom: 2px solid #6678b1;
+}
+
+#ensayo td
+{
+	color: #004080;
+	padding: 9px 8px 0px 8px;
+}
+
+h3{
+	margin-left: 50px;
+}
+
+table{
+	margin-left: 50px;
+	font-size: 12px;
+	background: #fff;
+	width: 480px;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+th{
+	font-size: 14px;
+	font-weight: normal;
+	color: #039;
+	padding: 10px 8px;
+	border-bottom: 2px solid #6678b1;
+}
+
+td{
+	color: #669;
+	padding: 9px 8px 0px 8px;
+}
+
+h1{
+	margin-left: 50px;
+}
+
+#new{
+	margin-left: 50px;
+}
+
+#flash_notice, #flash_error {
+  padding: 5px 8px;
+  margin-left: 50px;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_error {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+.fieldWithErrors {
+  display: inline;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: 0;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 8px;
+}
+
+#errorExplanation ul {
+  margin: 2px 24px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: disc;
+}

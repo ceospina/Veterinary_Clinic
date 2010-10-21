@@ -1,0 +1,8 @@
+<html>
+  <body>
+    <h2>Nueva Consulta</h2>
+    <% form_for :consulta, :url => consultas_path, :html => {:method => :post}  do |f|%>
+      <%= render :partial => "form_consulta", :locals => {:f => f}%>
+    <% end %>
+  </body>
+</html>

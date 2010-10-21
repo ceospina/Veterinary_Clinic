@@ -1,0 +1,28 @@
+    <h3>Lista de razas, metodo index</h3>
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Especie_id</th>   
+      </tr>
+      <% @breeds.each do |breed|%>
+        <tr>
+          <td>
+            <%= breed.name %>
+          </td>
+          <td>
+            <%= breed.description %>
+          </td> 
+		  <td>
+            <%= breed.specie_id%>
+          </td> 
+		  <td><%= link_to 'Show', breed_path(breed) %></td>		  
+   		  <td><%= link_to 'Edit', edit_breed_path(breed) %></td>
+    	  <td><%= link_to 'Delete',breed_path(breed),:confirm =>'are you sure?', :method => :delete%></td>
+        </tr>
+      <% end %>
+    </table>
+	<div>
+		<br>
+		<%= link_to "Nueva Raza", new_breed_path, :id => "new" %>
+	<div>

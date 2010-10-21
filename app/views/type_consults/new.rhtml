@@ -1,0 +1,5 @@
+<h1>Nueva Raza</h1>
+<% form_for :type_consult, :url => type_consults_path, :html => {:method => :post}  do |f|%>
+<%= render :partial => "form_type", :locals => {:f => f}%>
+<%= f.submit :salvar%>
+<% end %>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>VeterinaryClinic</title>
+	  <%= stylesheet_link_tag :all %>
+	  <%= javascript_include_tag :defaults %>
+	  <%= csrf_meta_tag %>
+	</head>
+	<body>
+		<div id = "container">
+		<%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <%- end -%>
+		<h1> Clinica Veterinaria </h1>
+		<div>
+			<table id ="ensayo">
+				<tr>
+					<th><%= link_to "Animales", animals_path %></th>
+					<th><%= link_to "Clientes", clients_path %></th>
+					<th><%= link_to "Razas", breeds_path %></th>
+					<th><%= link_to "Especie", species_index_path %></th>
+					<th><%= link_to "Doctores", doctors_path %></th>
+					<th><%= link_to "Horarios", horaries_path %></th>
+					<th><%= link_to "Citas", meetings_path %></th>
+					<th><%= link_to "Tipos de consulta", type_consults_path %></th>
+					<th><%= link_to "Consultas", consultas_path %></th>
+				</tr>
+			</table>
+		</div>
+		<%= yield %>
+		</div>
+	</body>
+</html>

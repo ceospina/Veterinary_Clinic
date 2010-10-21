@@ -1,0 +1,5 @@
+<h1>Nuevo horario</h1>
+<% form_for :horary, :url => horaries_path, :html => {:method => :post}  do |f|%>
+<%= render :partial => "form_horary", :locals => {:f => f}%>
+<%= f.submit :salvar%>
+<% end %>

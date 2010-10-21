@@ -1,0 +1,6 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<h2> Editar consulta<%= @type_consult.name %></h2>
+    <%form_for :type_consult, :url => type_consult_path, :html => {:method => :put}  do |f|%>
+      <%= render :partial => "form_type", :locals => {:f => f}%>
+	  <%= f.submit :salvar%>
+<% end %>

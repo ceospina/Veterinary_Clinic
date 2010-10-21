@@ -1,0 +1,2 @@
+module TypeConsultsHelper
+end

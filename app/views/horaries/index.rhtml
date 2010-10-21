@@ -1,0 +1,32 @@
+    <h3>Lista de Especies, metodo index</h3>
+    <table>
+      <tr>
+        <th>Dia</th>
+        <th>Hora inicio</th>
+        <th>Hora final</th>
+        <th>Doctor</th>
+      </tr>
+      <% @horaries.each do |horary|%>
+        <tr>
+          <td>
+            <%= horary.Day %>
+          </td>
+          <td>
+            <%= horary.startTime%>
+          </td>
+          <td>
+            <%= horary.finalHour %>
+          </td> 
+          <td>
+            <%= horary.doctor_id %>
+          </td> 
+		  <td><%= link_to 'Show', horary_path(horary) %></td>		  
+   		  <td><%= link_to 'Edit', edit_horary_path(horary) %></td>
+    	  <td><%= link_to 'Delete',horary_path(horary),:confirm =>'Are you sure?', :method => :delete%></td>
+        </tr>
+      <% end %>
+    </table>
+	<div>
+		<br>
+		<%= link_to "Nuevo horario", new_horary_path, :id => "new" %>
+	<div>

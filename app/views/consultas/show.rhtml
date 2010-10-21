@@ -1,0 +1,49 @@
+<html>
+	<body>
+		<h1> Consulta de <%= @consulta.animal.name%></h1>
+		
+		<p><strong>Animal </strong> <%= @consulta.animal.name%> <br/>
+		<p><strong>Doctor </strong> <%= @consulta.doctor.name%><br/>
+		<p><strong>Tipo Consulta </strong> <%= @consulta.typeConsult.name%><br/>
+		<p><strong>Fecha </strong> <%= @consulta.date%><br/>
+		<p><strong>Sintomas </strong> <%= @consulta.medicalAlert%><br/>
+		<p><strong>Alergias </strong> <%= @consulta.allergies%><br/>
+		<p><strong>Vacunas </strong> <%= @consulta.vaccines%><br/>
+		<p><strong>Examenes </strong> <%= @consulta.medicalTests%><br/>
+		<p><strong>Cirugias </strong> <%= @consulta.surgeries%><br/>
+		<p><strong>Peso </strong> <%= @consulta.weight%><br/>
+		<p><strong>Diagnostico</strong> <%= @consulta.diagnosis%><br/>
+		<p><strong>Temperatura </strong> <%= @consulta.temperature%><br/>
+		<p><strong>Ritmo Cardiaco </strong> <%= @consulta.heartRate%><br/>
+		<p><strong>Pulso </strong> <%= @consulta.pulse%><br/>
+		<p><strong>Lesiones </strong> <%= @consulta.injuries%><br/>
+		<p><strong>Tratamiento </strong> <%= @consulta.treatment%><br/>
+		<p><strong>Fecha Admisiones </strong> <%= @consulta.dateAdmission%><br/>
+		<p><strong>Fecha de Alta </strong> <%= @consulta.dischargeDate%><br/>
+		<p><strong>Fecha de Muerte </strong> <%= @consulta.dateDeath%><br/>
+		
+		
+		<!-- t.date	:date, :null => false
+	  t.string	:medicalAlert, :null => false
+	  t.string	:allergies
+	  t.string	:vaccines
+	  t.string	:medicalTests
+	  t.string	:surgeries
+	  t.decimal	:weight, :null => false
+	  t.text	:diagnosis, :null => false
+	  t.decimal	:temperature, :null => false
+	  t.integer	:heartRate, :null => false
+	  t.integer	:pulse, :null => false
+	  t.text	:injuries
+	  t.text	:treatment, :null => false
+	  t.datetime :dateAdmission
+	  t.datetime :dischargeDate	 
+	  t.datetime :dateDeath
+	  t.integer	:typeConsult_id, :null => false
+	  t.integer	:animal_id, :null => false
+	  t.integer	:doctor_id, :null => false
+		-->	
+		<%= link_to "Back", consultas_path %>
+		
+	</body>
+</html>

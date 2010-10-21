@@ -1,0 +1,30 @@
+<div><div>Doctor:</div>
+  <%= Doctors_for_select f %> <!--#f.select :category_id, Category.for_select#-->
+</div> 
+<div><div>Tipo Consulta:</div>
+  <%= Types_for_select f%> <!--#f.select :category_id, Category.for_select#-->
+</div> 
+<div><div>Animal:</div>
+  <%= Animals_for_select f%> <!--#f.select :category_id, Category.for_select#-->
+</div> 
+<div><div>Fecha:</div><%= f.date_select :date %></div>
+<div><div>Sintomas:</div><%= f.text_area :medicalAlert, options ={:size => "30x10"} %></div> 
+<div><div>Alergias:</div><%= f.text_area :allergies, options ={:size => "30x10"} %></div> 
+<div><div>Vacunas:</div><%= f.text_area :vaccines, options ={:size => "30x10"} %></div> 
+<div><div>Examenes:</div><%= f.text_area :medicalTests, options ={:size => "30x10"} %></div> 
+<div><div>Cirugias:</div><%= f.text_area :surgeries, options ={:size => "30x10"} %></div> 
+<div><div>lesiones:</div><%= f.text_area :injuries, options ={:size => "30x10"} %></div> 
+<div><div>Peso:</div><%= f.text_field :weight %></div> 
+<div><div>Temperatura:</div><%= f.text_field :temperature %></div> 
+<div><div>Ritmo Cardiaco</div><%= f.text_field :heartRate %></div> 
+<div><div>Pulso</div><%= f.text_field :pulse %></div> 
+<div><div>Fecha Ingreso:</div><%= f.date_select :dateAdmission %></div>
+<div><div>Fecha Alta:</div><%= f.date_select :dischargeDate %></div>
+<div><div>Fecha Muerte:</div><%= f.date_select :dateDeath %></div>
+<div><div>Diagnostico:</div><%= f.text_area :diagnosis, options ={:size => "30x10"} %></div> 
+<div><div>Tratamiento:</div><%= f.text_area :treatment, options ={:size => "30x10"} %></div> 
+
+<%= f.submit :salvar%>
+<br>
+<%= link_to "Back", consultas_path %>
+

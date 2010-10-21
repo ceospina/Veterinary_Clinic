@@ -1,0 +1,19 @@
+<div>
+	<div>Nombre:</div>
+	<%= f.text_field :name %>
+</div>
+
+<div>
+	<div>Descripcion:</div>
+	<%= f.text_area :description, :cols => 20, :rows => 10 %>
+</div>
+
+<div>
+	<div>Especie:</div>
+	<%= f.text_field :specie_id %>
+</div>
+
+<div>
+	<br>
+	<%= link_to "Atras", breeds_path%>
+</div>

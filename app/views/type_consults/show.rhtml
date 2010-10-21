@@ -1,0 +1,5 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<h2> Ver a <%= @type_consult.name %></h2>
+    <%form_for @type_consult do |f|%>
+    <%= render :partial => "form_type", :locals => {:f => f}%>
+<% end %>
