@@ -1,11 +1,18 @@
-﻿		<h2>Lista de consultas, Metodo Index<h2>
+<h2>Lista de consultas, Metodo Index<h2>
 		<table>
-			<% @consultas.each do |consulta| %> 
+			
+			<tr>
+        <th>Nombre Animal</th>
+        <th>Nombre Doctor</th>
+        <th>Tipo Consulta</th>
+        <th>Dueno</th>
+      </tr>
+      <% @consultas.each do |consulta| %> 
 			<tr>  
 					<td><%= consulta.animal.name %></td> 
 					<td><%= consulta.doctor.name %></td> 
 					<td><%= consulta.typeConsult.name %></td>
-					<td><%= consulta.id %></td>
+					<td><%= consulta.animal.client.name %></td>
 					<td><%= link_to "Show", consulta %> </td> 
 					<td><%= link_to  "Edit", edit_consulta_path(consulta) %></td>  
 					<td><%= link_to "Delete", consulta, :confirm => "Are you sure?", :method=>:delete %></td>

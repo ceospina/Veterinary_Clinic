@@ -1,6 +1,50 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <h2> Ver a <%= @animal.name %></h2>
     <%form_for @animal do |f|%>
     <%= render :partial => "form_animal", :locals => {:f => f}%>
 	
 <% end %>
+<-->
+
+<p id="notice"><%= notice %></p>
+<h2> Ver a <%= @animal.name %></h2>
+
+<div>
+  <strong>Name</strong></> <%= @animal.name %>
+</div>
+
+<div>
+  <strong>Birth Day</strong> <%=@animal.birthDay%>
+</div>
+
+<div>
+  <strong>Sex</strong> <%= @animal.sex? ? "Female" : "Male"%>
+</div>
+
+<div>
+  <strong>Description</strong> <%= @animal.description%>
+  
+</div>
+
+<div>
+ <strong> Spayed</strong> <%= @animal.spayed? ? "Yes" : "No"%>
+</div>
+
+<div>
+  <strong>Diet</strong> <%= @animal.diet%>
+</div>
+
+<div>
+ <strong>Habitat</strong> <%= @animal.habitat%>
+</div>
+
+<div>
+  <strong>Raza</strong> <%= @animal.breed.name%>
+</div>
+
+<div>
+  <strong>Dueno</strong> <%= @animal.client.name%>
+</div>
+
+<%= link_to 'Edit', edit_animal_path(@animal) %> |
+<%= link_to 'Back', animals_path %>

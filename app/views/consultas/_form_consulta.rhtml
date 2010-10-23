@@ -1,3 +1,14 @@
+  <% if @consulta.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@consulta.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+      <% @consulta.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
 <div><div>Doctor:</div>
   <%= Doctors_for_select f %> <!--#f.select :category_id, Category.for_select#-->
 </div> 
@@ -24,7 +35,9 @@
 <div><div>Diagnostico:</div><%= f.text_area :diagnosis, options ={:size => "30x10"} %></div> 
 <div><div>Tratamiento:</div><%= f.text_area :treatment, options ={:size => "30x10"} %></div> 
 
-<%= f.submit :salvar%>
-<br>
-<%= link_to "Back", consultas_path %>
+<div class="actions">
+    <%= f.submit %>
+</div>
+
+
 

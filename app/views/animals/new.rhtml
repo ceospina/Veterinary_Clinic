@@ -1,5 +1,5 @@
 <h1>Un nuevo animal</h1>
 <% form_for :animal, :url => animals_path, :html => {:method => :post}  do |f|%>
-<%= render :partial => "form_animal", :locals => {:f => f}%>
-<%= f.submit :salvar%>
+  <%= render :partial => "form_animal", :locals => {:f => f}%>
 <% end %>
+<%= link_to 'Back', animals_path %>
