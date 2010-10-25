@@ -5,10 +5,9 @@
 # below each fixture, per the syntax in the comments below
 #
 SinRazaConCliente:
-	id: 1
-	name: rocco
+	name: 'rocco'
 	sex: true
-	description: feo
+	description: 'feo'
 	spayed: true
 	breed_id: null
 	client_id: 1

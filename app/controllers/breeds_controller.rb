@@ -1,19 +1,35 @@
 class BreedsController < ApplicationController
  def index
     @breeds= Breed.find(:all)
+    respond_to do |format|
+      format.html # index.rhtml
+      format.xml  { render :xml => @breeds }
+    end
   end
   def new
     @breed = Breed.new
+    respond_to do |format|
+      format.html # new.rhtml
+      format.xml  { render :xml => @breed }
+    end
   end
-  
+  def show
+  @breed = Breed.find(params[:id])
+  respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @breed}
+    end
+  end
   def create
     @breed = Breed.new(params[:breed])
-    if @breed.save
-      flash[:notice] = "El elemento ha sido Salvado exitosamente"
-      redirect_to breeds_path
-    else
-      flash[:error] = "El elemento no ha sido Salvado"
-      render :action => "new"
+    respond_to do |format|
+      if @breed.save 
+        format.html{redirect_to(@breed, :notice => "Breed was successfully created") }
+        format.xml{render :xml => @breed, :status => :created, :location =>@breed }
+      else
+        format.html{render :action => 'new'}
+        format.xml{render :xml => @breed.errors, :status => :unprocessable_entity }        
+      end
     end
     
   end
@@ -23,25 +39,29 @@ class BreedsController < ApplicationController
   end
   
   def update 
-    if @breed = Breed.find(params[:id])
-      @breed.update_attributes(params[:breed])
-      flash[:notice] = "El elemento ha sido actualizado exitosamente"
-      redirect_to breeds_path
-    else
-      render :action => "edit"
+    @breed = Breed.find(params[:id])
+   respond_to do |format|
+      if @breed.update_attributes(params[:breed])
+        format.html { redirect_to(@breed, :notice => 'Breed was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @breed.errors, :status => :unprocessable_entity }
+      end
     end
   end
+  
   def destroy
     @breed = Breed.find(params[:id])
     if @breed.destroy
-		  flash[:notice] = "El elemento ha sido borrado exitosamente"
-		else
-		  flash[:error] = "Problemas en la eliminacion"
-	  end
-	  redirect_to breeds_path
-  end
-  
-  def show
-	@breed = Breed.find(params[:id])
+		  respond_to do |format|
+        format.html { redirect_to(breeds_url, :notice =>  "Breed Deleted")}
+        format.xml  { head :ok }
+      end
+     else
+       respond_to do |format|
+        format.html { redirect_to(breeds_url, :error =>  "Error Breeds NO Deleted")}
+       end
+     end 
   end
 end

@@ -44,7 +44,7 @@ class ConsultasController < ApplicationController
 	def update
 		@consulta = Consulta.find(params[:id])		
 		respond_to do |format|
-      if @consulta.update_attributes(params[:animal])
+      if @consulta.update_attributes(params[:consulta])
         format.html { redirect_to(@consulta, :notice => 'Consulta was successfully updated.') }
         format.xml  { head :ok }
       else

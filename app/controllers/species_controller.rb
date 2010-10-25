@@ -36,14 +36,14 @@ class SpeciesController < ApplicationController
   def destroy
     @specie = Specie.find(params[:id])
     if @specie.destroy
-		  flash[:notice] = "El elemento ha sido borrado exitosamente"
-		else
-		  flash[:error] = "Problemas en la eliminacion"
-	  end
-	 redirect_to species_index_path
+      flash[:notice] = "El elemento ha sido borrado exitosamente"
+    else
+      flash[:error] = "Problemas en la eliminacion"
+    end
+   redirect_to species_index_path
   end
   
   def show
-	@specie = Specie.find(params[:id])
+  @specie = Specie.find(params[:id])
   end
 end

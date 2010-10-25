@@ -1,19 +1,28 @@
+  <% if @breed.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@breed.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+      <% @breed.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <div>
-	<div>Nombre:</div>
-	<%= f.text_field :name %>
+	<%= f.label :name%>
+	<%= f.text_field :name %>	
 </div>
 
 <div>
-	<div>Descripcion:</div>
-	<%= f.text_area :description, :cols => 20, :rows => 10 %>
+  <%= f.label :description%><br>
+  <%= f.text_area :description, :cols => 20, :rows => 10 %>
 </div>
 
 <div>
-	<div>Especie:</div>
+	<%= f.label :specie_id%>
 	<%= f.text_field :specie_id %>
 </div>
 
-<div>
-	<br>
-	<%= link_to "Atras", breeds_path%>
+<div class="actions">
+    <%= f.submit %>
 </div>
