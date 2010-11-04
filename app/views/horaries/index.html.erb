@@ -1,0 +1,26 @@
+<h1>Listing horaries</h1>
+
+<table id="index">
+  <tr>
+    <th>Dia</th>
+    <th>Hora inicio</th>
+    <th>Hora final</th>
+    <th>Doctor</th>
+  </tr>
+
+<% @horaries.each do |horary| %>
+  <tr>
+    <td><%= horary.day%></td>
+    <td><%= horary.startTime%></td>
+    <td><%= horary.finalHour %></td> 
+    <td><%= horary.doctor.name %></td> 
+    <td><%= link_to 'Show', horary %></td>
+    <td><%= link_to 'Edit', edit_horary_path(horary) %></td>
+    <td><%= link_to 'Destroy', horary, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Horary', new_horary_path %>

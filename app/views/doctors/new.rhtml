@@ -1,5 +1,0 @@
-<h1>Nuevo Doctor</h1>
-<% form_for :doctor, :url => doctors_path, :html => {:method => :post}  do |f|%>
-<%= render :partial => "form_doctor", :locals => {:f => f}%>
-<%= f.submit :salvar%>
-<% end %>

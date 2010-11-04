@@ -1,5 +1,0 @@
-<h1>Nueva Especie</h1>
-<% form_for :specie, :url => species_index_path, :html => {:method => :post}  do |f|%>
-<%= render :partial => "form_specie", :locals => {:f => f}%>
-<%= f.submit :salvar%>
-<% end %>

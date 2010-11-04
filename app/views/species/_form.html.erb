@@ -1,0 +1,25 @@
+  <% if @specie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@specie.errors.count, "error") %> prohibited this species from being saved:</h2>
+
+      <ul>
+      <% @specie.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+<div>
+  <div>Nombre:</div>
+  <%= f.text_field :name %>
+</div>
+
+<div>
+  <div>Descripcion:</div>
+  <%= f.text_area :description, :cols => 20, :rows => 10 %>
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>

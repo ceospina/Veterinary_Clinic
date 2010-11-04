@@ -1,0 +1,9 @@
+<h1>Editing species</h1>
+
+<%form_for :specie, :url => species_path, :html => {:method => :put}  do |f|%>
+<%= render :partial => "form", :locals => {:f => f}%>      
+<% end %>
+
+
+<%= link_to 'Show',species_path(@specie)%> |
+<%= link_to 'Back', species_index_path %>

@@ -1,0 +1,72 @@
+<%= form_for(@client) do |f| %>
+  <% if @client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+      <% @client.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+<div>
+  <div>Nombre:</div>
+  <%= f.text_field :name %>
+</div>
+
+<div>
+  <div>Apellido:</div>
+  <%= f.text_field :lastName %>
+</div>
+
+<div>
+  <div>Documento:</div>
+  <%= f.text_field :idDocument %>
+</div>
+
+<div>
+  <div>E-mail:</div>
+  <%= f.text_field :email%>
+  <%#= f.text_field :email_confirmation%>
+  </div>
+
+<div>
+  <div>Telefono:</div>
+  <%= f.text_field :phoneHome%>
+</div>
+
+<div>
+  <div>Celular:</div>
+  <%= f.text_field :phoneCell%>
+</div>
+
+<div>
+  <div>Direccion:</div>
+  <%= f.text_field :address%>
+</div>
+
+<div>
+  <div>Dueño:</div>
+  <div>No
+    <%= f.radio_button :isowner, false%>
+    Si
+    <%= f.radio_button :isowner, true%>
+  </div>
+</div>
+
+<div>
+  <div>User Name:</div>
+  <%= f.text_field :userName%>
+</div>
+
+<div>
+  <div>Password:</div>
+  <%= f.text_field :password%>
+</div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

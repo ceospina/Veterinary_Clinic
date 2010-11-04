@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<hr>
+<div id="show">
+  <%= image_tag "logoCUL.bmp", {:style => "float:right;"} %> 
+  <h4>Nombre: </h4><p><%= @type_consult.name %>
+  <h4>descripcion: </h4><p><%= @type_consult.description %>
+</div>
+<hr>
+
+<%= link_to 'Edit', edit_type_consult_path(@type_consult) %> |
+<%= link_to 'Back', type_consults_path %>

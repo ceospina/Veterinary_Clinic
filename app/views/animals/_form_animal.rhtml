@@ -19,13 +19,9 @@
 </div>
 
 <div>
-  <%= f.label :sex%>
-	<div>
-	   Female
-		 <%= f.radio_button :sex, false%> 
-		 Male 
-		 <%= f.radio_button :sex, true%>
-	</div>
+     <%= f.label :sex%>
+     <%= f.radio_button :sex, 'f', :checked=>true%>
+     <%= f.radio_button :sex, 'true'%>
 </div>
 
 <div>
@@ -36,10 +32,8 @@
 <div>
 	<%= f.label :spayed%>
 	<div>
-	   No
-		 <%= f.radio_button :spayed, false%> 
-		 Si
-		 <%= f.radio_button :spayed, true%>
+	   No<%= f.radio_button :spayed, 'false'%> 
+		 Si<%= f.radio_button :spayed, 'true'%>
 	</div>
 </div>
 
@@ -59,8 +53,8 @@
 </div>
 
 <div>
-  <%= f.label :client%>
-	<%= f.text_field :client_id %>
+  <%= f.label :client_id%>
+	<%= Clients_for_select f%>
 </div>
 
 <div class="actions">

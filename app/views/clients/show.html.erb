@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<hr>
+<div id="show">
+  <%= image_tag "logoCUL.bmp", {:style => "float:right;"} %> 
+  <h4>Nombre:</h4><p><%=@client.name %>
+  <h4>Apellido:</h4><p><%=@client.lastName %>
+  <h4>Documento:</h4><p><%= @client.idDocument%>
+  <h4>Email: </h4><p><%=@client.email %>
+  <h4>Telefono:</h4><p><%=@client.phoneHome %>
+  <h4>Celular:</h4><p><%=@client.phoneCell %>
+  <h4>Direccion:</h4><p><%=@client.address %>
+  <h4>Dueño?:</h4><p><%= @client.isowner? ? "Si": "No"%>
+  <h4>User Name:</h4><p><%=@client.userName%>
+  <h4>Password:</h4><p><%= @client.password%>
+</div>
+<hr>
+
+<%= link_to 'Edit', edit_client_path(@client) %> |
+<%= link_to 'Back', clients_path %>

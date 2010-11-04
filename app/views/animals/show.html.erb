@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+<hr>
+<div id="show">
+  <%= image_tag "logoCUL.bmp", {:style => "float:right;"} %> 
+  <h4>Nombre: </h4><p><%= @animal.name %>
+  <h4>Cumpleaños:</h4><p><%= @animal.birthDay %>
+  <h4>Sexo: </h4><p><%= @animal.sex? ? "Macho" : "Hembra" %>
+  <h4>descripcion: </h4><p><%= @animal.description%>
+  <h4>castrado: </h4><p><%= @animal.spayed? ? "Si":"No"%>
+  <h4>Dieta: </h4><p><%= @animal.diet%>
+  <h4>Habitat: </h4><p><%= @animal.habitat%>
+  <h4>Raza: </h4><p><%= @animal.breed.name%>
+  <h4>Cliente: </h4><p><%= @animal.client.name%>
+</div>
+<hr>
+<%= link_to 'Edit', edit_animal_path(@animal) %> |
+<%= link_to 'Back', animals_path %>

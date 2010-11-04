@@ -1,0 +1,22 @@
+<h1>Listing breeds</h1>
+
+<table id = "index">
+  <tr>
+    <th>Nombre</th>
+    <th>Especie</th>
+  </tr>
+
+<% @breeds.each do |breed| %>
+  <tr>
+    <td><%= breed.name %></td>
+    <td><%= breed.specie.name%></td> 
+    <td><%= link_to 'Show', breed %></td>
+    <td><%= link_to 'Edit', edit_breed_path(breed) %></td>
+    <td><%= link_to 'Destroy', breed, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br/>
+
+<%= link_to 'New Breed', new_breed_path %>

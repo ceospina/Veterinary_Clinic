@@ -43,6 +43,56 @@ body {
 	padding: 9px 8px 0px 8px;
 }
 
+#container h1{
+   color:#003399;
+   font:"Comic Sans MS";
+}
+h3{
+  margin-left: 50px;
+}
+
+#show{
+  
+  text-align: justify;
+  padding: 0px 200px 0px 200px;
+  border-style: solid;
+  width: 50%;
+  margin-left: 10%; 
+  
+}
+
+#show p{
+  margin-left: 50px;
+  padding: 0px 200px 20px 20px;
+}
+
+#show h4{
+  text-decoration: underline;
+}
+
+
+
+#index {
+  margin-left: 50px;
+  font-size: 12px;
+  background: #fff;
+  width: 480px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+#index th{
+  font-size: 14px;
+  font-weight: normal;
+  color: #039;
+  padding: 10px 8px;
+  border-bottom: 2px solid #6678b1;
+}
+
+#index td{
+  color: #669;
+  padding: 9px 8px 0px 8px;
+}
 h3{
 	margin-left: 50px;
 }

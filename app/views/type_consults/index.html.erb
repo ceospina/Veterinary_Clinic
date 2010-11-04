@@ -1,0 +1,20 @@
+<h1>Listing type_consults</h1>
+
+<table id ="index">
+  <tr>
+    <th>Nombre</th>
+  </tr>
+
+<% @type_consults.each do |type_consult| %>
+  <tr>
+    <td><%= type_consult.name %></td>
+    <td><%= link_to 'Show', type_consult %></td>
+    <td><%= link_to 'Edit', edit_type_consult_path(type_consult) %></td>
+    <td><%= link_to 'Destroy', type_consult, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Type consult', new_type_consult_path %>

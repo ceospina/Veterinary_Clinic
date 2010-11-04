@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<hr>
+<div id="show">
+  <%= image_tag "logoCUL.bmp", {:style => "float:right;"} %>
+  <h4>Nombre:</h4><p><%=@doctor.name %>
+  <h4>Apellido:</h4><p><%=@doctor.lastName %>
+  <h4>Documento:</h4><p><%= @doctor.idDocument%>
+  <h4>Email: </h4><p><%=@doctor.email %>
+  <h4>Telefono:</h4><p><%=@doctor.phoneHome %>
+  <h4>Celular:</h4><p><%=@doctor.phoneCell %>    
+  <h4>Especialidad:</h4><p><%=@doctor.speciality %>
+  <h4>Direccion:</h4><p><%=@doctor.address %>
+  <h4>User Name:</h4><p><%=@doctor.userName%>
+  <h4>Password:</h4><p><%= @doctor.password%>
+</div>
+<hr>
+<%= link_to 'Edit', edit_doctor_path(@doctor) %> |
+<%= link_to 'Back', doctors_path %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<hr>
+<div id="show">
+  <%= image_tag "logoCUL.bmp", {:style => "float:right;"} %> 
+  <h4>Dueño: </h4><p><%= @meeting.ownerName  %>
+  <h4>Id dueño: </h4><p><%=@meeting.ownerId %>
+  <h4>Fecha cita: </h4><p><%= @meeting.meetingDate %>
+  <h4>Hora cita: </h4><p><%= @meeting.meetingHour %>
+  <h4>Doctor: </h4><p><%= @meeting.doctor.name%>
+  </div>
+<hr>
+
+<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
+<%= link_to 'Back', meetings_path %>

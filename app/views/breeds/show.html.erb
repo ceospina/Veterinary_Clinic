@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+<hr>
+<div id="show">
+  <%= image_tag "logoCUL.bmp", {:style => "float:right;"} %> 
+  <h4>Nombre: </h4><p><%= @breed.name %>
+  <h4>descripcion: </h4><p><%= @breed.description%>
+  <h4>Especie: </h4><p><%= @breed.specie.name %>
+  </div>
+<hr>
+<%= link_to 'Edit', edit_breed_path(@breed) %> |
+<%= link_to 'Back', breeds_path %>

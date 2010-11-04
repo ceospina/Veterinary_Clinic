@@ -1,0 +1,26 @@
+<h1>Listing doctors</h1>
+
+<table id = "index">
+  <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Especialidad</th>
+
+  </tr>
+
+<% @doctors.each do |doctor| %>
+  <tr>
+    <td><%= doctor.name %></td>
+    <td><%= doctor.lastName %></td> 
+    <td><%= doctor.speciality%></td>
+
+    <td><%= link_to 'Show', doctor %></td>
+    <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
+    <td><%= link_to 'Destroy', doctor, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Doctor', new_doctor_path %>

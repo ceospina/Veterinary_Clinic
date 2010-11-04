@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(:version => 20101002205456) do
   create_table "animals", :force => true do |t|
     t.string   "name",                           :null => false
     t.date     "birthDay"
-    t.boolean  "sex",                            :null => false
     t.string   "description",                    :null => false
     t.boolean  "spayed",      :default => false
     t.string   "diet"
@@ -24,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20101002205456) do
     t.string   "habitat"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "sex",         :default => false
   end
 
   create_table "breeds", :force => true do |t|

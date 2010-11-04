@@ -6,27 +6,45 @@
 	  <%= javascript_include_tag :defaults %>
 	  <%= csrf_meta_tag %>
 	</head>
-	<body>
+	<body>  
 		<div id = "container">
-		<%- flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <%- end -%>
+        <div class="menu">
+          <ul>
+          <li><%= link_to "Animales", animals_path, :id=> "current" %></li>
+          <li><%= link_to "Clientes", clients_path%></li>
+          <li><%= link_to "Razas", breeds_path%></li>
+          <li><%= link_to "Especies", species_index_path%></li>
+          <li><%= link_to "Doctores", doctors_path%></li>
+          <li><%= link_to "Horarios", horaries_path%></li>
+          <li><%= link_to "Citas", meetings_path%></li>
+          <li><%= link_to "Tipos consulta", type_consults_path%></li>
+          <li><%= link_to "Consultas", consultas_path%></li>
+          </ul>
+        </div>
+    <br>
+    <br>     
+      <div class="nav">
+      <div class="table">
+
+       <ul class="select">
+       <li><b><%= link_to "Animales", animals_path, :id=> "current" %></b></li>
+       <li><b><%= link_to "Clientes", clients_path%><b></li>
+       <li><b><%= link_to "Razas", breeds_path%><b></li>
+       <li><b><%= link_to "Especies", species_index_path%><b></li>
+       <li><b><%= link_to "Doctores", doctors_path%><b></li>
+       <li><b><%= link_to "Horarios", horaries_path%><b></li>
+       <li><b><%= link_to "Citas", meetings_path%><b></li>
+       <li><b><%= link_to "Tipos consulta", type_consults_path%><b></li>
+       <li><b><%= link_to "Consultas", consultas_path%><b></li>
+       </ul> 
+       
+      </div>
+      </div>
+      
+      
+    <br>
 		<h1> Clinica Veterinaria </h1>
-		<div>
-			<table id ="ensayo">
-				<tr>
-					<th><%= link_to "Animales", animals_path %></th>
-					<th><%= link_to "Clientes", clients_path %></th>
-					<th><%= link_to "Razas", breeds_path %></th>
-					<th><%= link_to "Especie", species_index_path %></th>
-					<th><%= link_to "Doctores", doctors_path %></th>
-					<th><%= link_to "Horarios", horaries_path %></th>
-					<th><%= link_to "Citas", meetings_path %></th>
-					<th><%= link_to "Tipos de consulta", type_consults_path %></th>
-					<th><%= link_to "Consultas", consultas_path %></th>
-				</tr>
-			</table>
-		</div>
+
 		<%= yield %>
 		</div>
 	</body>
