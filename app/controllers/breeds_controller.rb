@@ -1,4 +1,6 @@
 class BreedsController < ApplicationController
+before_filter :authenticate_user!, :except => [:show, :index]
+load_and_authorize_resource
  def index
     @breeds= Breed.find(:all)
     respond_to do |format|

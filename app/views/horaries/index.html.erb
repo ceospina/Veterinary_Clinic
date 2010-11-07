@@ -11,8 +11,8 @@
 <% @horaries.each do |horary| %>
   <tr>
     <td><%= horary.day%></td>
-    <td><%= horary.startTime%></td>
-    <td><%= horary.finalHour %></td> 
+    <td><%= "#{horary.startTime.hour}"+"-"+"#{horary.startTime.min}"+"-"+"#{horary.startTime.sec}"%></td>
+    <td><%= "#{horary.finalHour.hour}"+"-"+"#{horary.finalHour.min}"+"-"+"#{horary.finalHour.sec}"%></td> 
     <td><%= horary.doctor.name %></td> 
     <td><%= link_to 'Show', horary %></td>
     <td><%= link_to 'Edit', edit_horary_path(horary) %></td>

@@ -1,4 +1,6 @@
 class MeetingsController < ApplicationController
+before_filter :authenticate_user!, :except => [:show, :index]
+load_and_authorize_resource
   # GET /meetings
   # GET /meetings.xml
   def index
@@ -40,8 +42,12 @@ class MeetingsController < ApplicationController
   # POST /meetings
   # POST /meetings.xml
   def create
-    @meeting = Meeting.new(params[:meeting])
-
+    @meeting = Meeting.new(params[:meeting])    
+    @horarioDoctor=Horary.find_by_sql("SELECT Horaries.id from Horaries where doctor_id=@meeting.doctor_id and day=@meeting.meetingDate and startTime<=@meeting.meetingHour and finalHour>=@meeting.meetingHour")
+    
+    if @horarioDoctor!=nil
+      @
+    end
     respond_to do |format|
       if @meeting.save
         format.html { redirect_to(@meeting, :notice => 'Meeting was successfully created.') }

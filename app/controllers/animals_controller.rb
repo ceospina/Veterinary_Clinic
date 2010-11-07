@@ -1,4 +1,6 @@
 class AnimalsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show, :index]
+  load_and_authorize_resource
 	def index
 		@animals = Animal.find(:all)
 		respond_to do |format|

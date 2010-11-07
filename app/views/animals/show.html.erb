@@ -13,5 +13,9 @@
   <h4>Cliente: </h4><p><%= @animal.client.name%>
 </div>
 <hr>
+<% if can? :update, Animal  %>
 <%= link_to 'Edit', edit_animal_path(@animal) %> |
+<%end%>
+<% if can? :index, Animal   %>
 <%= link_to 'Back', animals_path %>
+<%end%>

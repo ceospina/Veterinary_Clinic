@@ -3,49 +3,53 @@
 	<head>
 	  <title>VeterinaryClinic</title>
 	  <%= stylesheet_link_tag :all %>
-	  <%= javascript_include_tag :defaults %>
+	  <%= javascript_include_tag :defaults%>
 	  <%= csrf_meta_tag %>
 	</head>
 	<body>  
-		<div id = "container">
-        <div class="menu">
-          <ul>
-          <li><%= link_to "Animales", animals_path, :id=> "current" %></li>
-          <li><%= link_to "Clientes", clients_path%></li>
-          <li><%= link_to "Razas", breeds_path%></li>
-          <li><%= link_to "Especies", species_index_path%></li>
-          <li><%= link_to "Doctores", doctors_path%></li>
-          <li><%= link_to "Horarios", horaries_path%></li>
-          <li><%= link_to "Citas", meetings_path%></li>
-          <li><%= link_to "Tipos consulta", type_consults_path%></li>
-          <li><%= link_to "Consultas", consultas_path%></li>
-          </ul>
-        </div>
-    <br>
-    <br>     
-      <div class="nav">
-      <div class="table">
-
-       <ul class="select">
-       <li><b><%= link_to "Animales", animals_path, :id=> "current" %></b></li>
-       <li><b><%= link_to "Clientes", clients_path%><b></li>
-       <li><b><%= link_to "Razas", breeds_path%><b></li>
-       <li><b><%= link_to "Especies", species_index_path%><b></li>
-       <li><b><%= link_to "Doctores", doctors_path%><b></li>
-       <li><b><%= link_to "Horarios", horaries_path%><b></li>
-       <li><b><%= link_to "Citas", meetings_path%><b></li>
-       <li><b><%= link_to "Tipos consulta", type_consults_path%><b></li>
-       <li><b><%= link_to "Consultas", consultas_path%><b></li>
-       </ul> 
-       
-      </div>
-      </div>
-      
-      
-    <br>
-		<h1> Clinica Veterinaria </h1>
-
-		<%= yield %>
-		</div>
+	 <div id = "container2">
+  	 <div id = "menus">
+         <div id = "imagenLogo">
+           <%= image_tag "foto2.jpg", {:size => '980x200'} %> 
+         </div><!-- Fin imagenLogo-->
+  
+         <div id="menu_wrapper" class="blue">       
+            <ul id="menu"> 
+              <% if can? :read, :all  %>
+              <li><%= link_to "Consultas", consultas_path%></li> 
+              <li><%= link_to "Tipos consulta", type_consults_path%></li>
+              <li><%= link_to "Citas", meetings_path%></li> 
+              <li><%= link_to "Horarios", horaries_path%></li> 
+              <li><%= link_to "Doctores", doctors_path%></li>
+              <li><%= link_to "Especies", species_index_path%></li>
+              <li><%= link_to "Razas", breeds_path%></li>
+              <li class="active"><%= link_to "Clientes", clients_path%></li> 
+              <li><%= link_to "Animales", animals_path%></li> 
+              <%end%>
+            </ul> 
+          </div><!-- Fin menu_wrapper -->
+          
+          <div id="user_nav">  
+            <% if user_signed_in? %>  
+              Signed in as <%= current_user.email %>. Not you?  
+              <%= link_to "Sign out", destroy_user_session_path %>  
+            <% else %>  
+              <%= link_to "Sign up", new_user_registration_path %> or  
+              <%= link_to "Sign in", new_user_session_path %>  
+            <% end %>  
+          </div>  
+     </div><!-- Fin menus-->
+   
+	 </div>
+	 
+	 <div id = "container">
+	  <%- flash.each do |name, msg| -%> 
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <%- end -%>
+    
+  	   <hr>
+    		<%= yield %>
+  	   <hr>
+   </div>
 	</body>
 </html>

@@ -1,4 +1,7 @@
 class SpeciesController < ApplicationController
+before_filter :authenticate_user!, :except => [:show, :index]
+load_and_authorize_resource
+
   # GET /species
   # GET /species.xml
   def index

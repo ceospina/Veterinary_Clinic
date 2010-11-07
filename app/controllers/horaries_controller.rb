@@ -1,4 +1,6 @@
 class HorariesController < ApplicationController
+before_filter :authenticate_user!, :except => [:show, :index]
+load_and_authorize_resource
   # GET /horaries
   # GET /horaries.xml
   def index

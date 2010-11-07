@@ -2,5 +2,9 @@
     <%form_for :animal, :url => animal_path, :html => {:method => :put}  do |f|%>
       <%= render :partial => "form_animal", :locals => {:f => f}%>	    
     <% end %>
-<%= link_to 'Show', @animal %> |
+<% if can? :show, Animal  %>
+<%= link_to 'Show', @animal %>|
+<%end%>
+<% if can? :index, Animal  %>
 <%= link_to 'Back', animals_path %>
+<%end%>

@@ -1,4 +1,6 @@
 class TypeConsultsController < ApplicationController
+before_filter :authenticate_user!, :except => [:show, :index]
+load_and_authorize_resource
   # GET /type_consults
   # GET /type_consults.xml
   def index

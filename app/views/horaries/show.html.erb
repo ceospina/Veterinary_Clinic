@@ -4,8 +4,12 @@
 <div id="show">
   <%= image_tag "logoCUL.bmp", {:style => "float:right;"} %> 
   <h4>Dia: </h4><p><%=@horary.day %>
-  <h4>Hora inicio: </h4><p><%=@horary.startTime %>
-  <h4>Hora final: </h4><p><%= @horary.finalHour %>
+  <h4>Hora inicio: </h4><p>
+    <%= "#{@horary.startTime.hour}"+"-"+"#{@horary.startTime.min}"+"-"+"#{@horary.startTime.sec}"%>
+    
+  <h4>Hora final: </h4><p>
+    <%= "#{@horary.finalHour.hour}"+"-"+"#{@horary.finalHour.min}"+"-"+"#{@horary.finalHour.sec}"%>
+
   <h4>Doctor: </h4><p><%= @horary.doctor.name %>
   </div>
 <hr>
