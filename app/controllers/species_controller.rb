@@ -5,7 +5,7 @@ load_and_authorize_resource
   # GET /species
   # GET /species.xml
   def index
-    @species = Specie.all
+    @species = Species.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ load_and_authorize_resource
   # GET /species/1
   # GET /species/1.xml
   def show
-    @specie = Specie.find(params[:id])
+    @specie = Species.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +27,7 @@ load_and_authorize_resource
   # GET /species/new
   # GET /species/new.xml
   def new
-    @specie = Specie.new
+    @specie = Species.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,13 +37,13 @@ load_and_authorize_resource
 
   # GET /species/1/edit
   def edit
-    @specie = Specie.find(params[:id])
+    @specie = Species.find(params[:id])
   end
 
   # POST /species
   # POST /species.xml
   def create
-    @specie = Specie.new(params[:specie])
+    @specie = Species.new(params[:specie])
 
     respond_to do |format|
       if @specie.save
@@ -59,7 +59,7 @@ load_and_authorize_resource
   # PUT /species/1
   # PUT /species/1.xml
   def update
-    @specie = Specie.find(params[:id])
+    @specie = Species.find(params[:id])
     respond_to do |format|
       if @specie.update_attributes(params[:specie])
         format.html { redirect_to(@specie, :notice => 'Specie was successfully updated.') }
@@ -74,7 +74,7 @@ load_and_authorize_resource
   # DELETE /species/1
   # DELETE /species/1.xml
   def destroy
-    @specie = Specie.find(params[:id])
+    @specie = Species.find(params[:id])
     @specie.destroy
 
     respond_to do |format|

@@ -92,4 +92,23 @@ class AnimalsController < ApplicationController
        end
      end
     end
+    
+    def search
+      if params[:client]!=nil && params[:client]!=""
+        cliente=Client.where('idDocument= ?', params[:client])
+        
+        if cliente.count!=0
+          @animals=Animal.where("client_id= ?",cliente[0].id)
+        end
+        @animal=Animal.new
+        #@algo=cliente[0].name
+      else
+        @animal=Animal.new(params[:animal])        
+        @animals=Animal.find(:all, :conditions => ["name= ?", @animal.name])
+      end              
+      respond_to do |format|
+        format.html # search.html.erb
+        format.xml  { render :xml => @animals }
+      end
+    end
 end

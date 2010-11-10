@@ -1,7 +1,7 @@
 class Breed < ActiveRecord::Base
 	has_many :animals
-	belongs_to :specie
-	validates_associated :specie
+	belongs_to :species, :foreign_key=>'specie_id'
+	validates_associated :species
 	validates_presence_of :name,:description,:specie_id
 	validates_format_of :name, :with => /\A[a-zA-Z]+([\s]+[a-zA-Z]+)?\Z/i
   validates_length_of :name, :maximum=>30

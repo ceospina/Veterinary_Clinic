@@ -1,4 +1,4 @@
-class Specie < ActiveRecord::Base
+class Species < ActiveRecord::Base
 	has_many :breeds, :dependent => :destroy 
 	validates_presence_of :name,:description
 	validates_format_of :name, :with => /\A[a-zA-Z]+([\s]+[a-zA-Z]+)?\Z/i

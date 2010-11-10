@@ -14,9 +14,15 @@
 		      <td><%= animal.sex? ? "Macho" : "Hembra" %></td> 		  	  
 		      <td><%= animal.client.name%></td>
 		      <td><%= animal.breed.name%></td>
+		      <% if can? :read, Animal  %>
           <td><%= link_to 'Show', animal_path(animal) %></td>
+          <%end%>
+          <% if can? :update, Animal  %>
    		    <td><%= link_to 'Edit', edit_animal_path(animal) %></td>
+   		    <%end%>
+   		    <% if can? :delete, Animal  %>
     	    <td><%= link_to 'Delete',animal,:confirm =>'are you sure?', :method => :delete%></td>
+          <%end%>
         </tr>
       <% end %>
     </table>

@@ -1,5 +1,5 @@
 class Animal < ActiveRecord::Base
-	belongs_to :breed
+	belongs_to :breed, :foreign_key=>'breed_id'
 	belongs_to :client
 	has_many :consultas
 	validates_associated :consultas, :breed
