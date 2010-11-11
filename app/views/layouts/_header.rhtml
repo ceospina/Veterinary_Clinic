@@ -1,0 +1,37 @@
+<header>   
+     <nav class="round">
+      <ul>
+        <li><%= link_to "Home", pages_home_path %></li>
+       <!--> <li><%#= link_to "Help", '#' %></li><-->
+        <% if user_signed_in? %>  
+            <li>Signed in as <%= current_user.email %>. Not you?  
+              <%= link_to "Sign out", destroy_user_session_path %></li> 
+        <% else %>  
+              <li><%= link_to "Sign up", new_user_registration_path %><li> 
+              <li><%= link_to "Sign in", new_user_session_path %><li> 
+        <% end %>          
+      </ul>
+    </nav>
+     
+    <div ><!-->header<-->
+      <% logo = image_tag("foto2.jpg", :alt => "Sample App", :class => "round") %>
+      <%= link_to logo, root_path %>       
+    </div>
+    
+    <nav class="round">
+      <ul>
+        <% if can? :read, :all  %>
+              <li><%= link_to "Consultas", consultas_path%></li> 
+              <li><%= link_to "Tipos consulta", type_consults_path%></li>
+              <li><%= link_to "Citas", meetings_path%></li> 
+              <li><%= link_to "Horarios", horaries_path%></li> 
+              <li><%= link_to "Doctores", doctors_path%></li>
+              <li><%= link_to "Especies", species_index_path%></li>
+              <li><%= link_to "Razas", breeds_path%></li>
+              <li><%= link_to "Clientes", clients_path%></li> 
+              <li><%= link_to "Animales", animals_path%></li> 
+         <%end%>
+      </ul>
+    </nav>
+   
+</header>
