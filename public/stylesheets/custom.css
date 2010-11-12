@@ -19,7 +19,7 @@ header img {
 }
 
 section {
-  margin-top: 2em; 
+  margin-top: 4em; 
   font-size: 120%;
   padding: 20px;
   background: #fff;
@@ -56,6 +56,7 @@ nav {
   background-color: white;
   padding: 0 0.7em;
   white-space: nowrap;
+  margin-top: 2px;
 }
 
 nav ul {

@@ -8,7 +8,7 @@ class Ability
     elsif user.role? :secretary
       can [:read, :update], :all
     else
-      can :read, :all
+      can :read, [:home]
     end
   end
 

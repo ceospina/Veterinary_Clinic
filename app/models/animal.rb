@@ -1,4 +1,7 @@
 class Animal < ActiveRecord::Base
+  #attr_accessible :name, :email
+  #uniqueses
+
 	belongs_to :breed, :foreign_key=>'breed_id'
 	belongs_to :client
 	has_many :consultas

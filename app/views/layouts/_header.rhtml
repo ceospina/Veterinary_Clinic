@@ -1,8 +1,6 @@
 <header>   
      <nav class="round">
-      <ul>
-        <li><%= link_to "Home", pages_home_path %></li>
-       <!--> <li><%#= link_to "Help", '#' %></li><-->
+      <ul>      
         <% if user_signed_in? %>  
             <li>Signed in as <%= current_user.email %>. Not you?  
               <%= link_to "Sign out", destroy_user_session_path %></li> 
@@ -18,9 +16,9 @@
       <%= link_to logo, root_path %>       
     </div>
     
+    <% if can? :read, :all  %>
     <nav class="round">
-      <ul>
-        <% if can? :read, :all  %>
+      <ul>        
               <li><%= link_to "Consultas", consultas_path%></li> 
               <li><%= link_to "Tipos consulta", type_consults_path%></li>
               <li><%= link_to "Citas", meetings_path%></li> 
@@ -29,9 +27,18 @@
               <li><%= link_to "Especies", species_index_path%></li>
               <li><%= link_to "Razas", breeds_path%></li>
               <li><%= link_to "Clientes", clients_path%></li> 
-              <li><%= link_to "Animales", animals_path%></li> 
-         <%end%>
+              <li><%= link_to "Animales", animals_path%></li>          
       </ul>
     </nav>
-   
+    <%end%>
+    <% if can? :read, :home%>
+    <nav class="round">
+      <ul>        
+          <li><%= link_to "Home", pages_home_path %></li>
+          <li><%= link_to "About", pages_about_path%></li>
+          <li><%= link_to "Contact", pages_contact_path %></li>
+          <li><%= link_to "News", pages_noticias_path%></li>      
+      </ul>
+    </nav>
+    <%end%>
 </header>
