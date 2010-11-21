@@ -1,5 +1,7 @@
 class Species < ActiveRecord::Base
 	has_many :breeds, :dependent => :destroy 
+	attr_accessible :name, :description
+	validates_uniqueness_of :name
 	validates_presence_of :name,:description
 	validates_format_of :name, :with => /\A[a-zA-Z]+([\s]+[a-zA-Z]+)?\Z/i
   validates_length_of :name, :maximum=>30
@@ -7,5 +9,10 @@ class Species < ActiveRecord::Base
 	 def self.for_select
     all.collect {|c| [c.name, c.id]}
    end
+   
+   def self.for_name(name)
+     where("name LIKE ?","%#{name}%")
+   end
+  
   
 end

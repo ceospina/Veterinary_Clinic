@@ -82,4 +82,30 @@ load_and_authorize_resource
       format.xml  { head :ok }
     end
   end
+  
+  def search
+     params[:name]||=[]
+     params[:document]||=[]
+     
+     #@consulta= Consulta.new(:date=>'') unless params[:consulta]
+     #@consulta||=Consulta.new(params[:consulta])
+     @client=Client.new(params[:client])
+     #por nombre y fecha
+     @clients=Client.for_name_and_cedula(params[:name],params[:document]).paginate(:per_page=>5, :page=>params[:page]) unless (params[:name].empty? or params[:document].empty?)
+     @clients||=[]
+     #solo por nombre
+     @clients=Client.for_name(params[:name]).paginate(:per_page=>5, :page=>params[:page]) unless params[:name].empty? or params[:document].present?     
+     #solo por cedula
+     @clients=Client.for_cedula(params[:document]).paginate(:per_page=>5, :page=>params[:page]) unless params[:document].empty? or params[:name].present?
+     
+     
+    
+        
+      respond_to do |format|
+        format.html # search.html.erb
+        format.xml  { render :xml => @consultas }
+        format.js {render 'search.js.erb'}
+      end
+    
+  end
 end

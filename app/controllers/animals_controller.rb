@@ -27,14 +27,7 @@ class AnimalsController < ApplicationController
   end
   
   def create
-    @animal = Animal.new(params[:animal])
-  #  if @animal.save
-  #   flash[:notice] = "El elemento ha sido Salvado exitosamente"
-  #   redirect_to animals_path
-  #  else
-  #    flash[:error] = "El elemento no ha sido Salvado"
-  #  render :action => "new"
-  #  end
+    @animal = Animal.new(params[:animal])  
      respond_to do |format|
       if @animal.save
         format.html { redirect_to(@animal, :notice => 'Animal was successfully created.') }
@@ -52,15 +45,7 @@ class AnimalsController < ApplicationController
   end
   
   def update 
-   # if @animal = Animal.find(params[:id])
-   #  @animal.update_attributes(params[:animal])
-   #   flash[:notice] = "El elemento ha sido actualizado exitosamente"
-   #   redirect_to animals_path
-   # else
-   #   render :action => "edit"
-   # end
     @animal = Animal.find(params[:id])
-
     respond_to do |format|
       if @animal.update_attributes(params[:animal])
         format.html { redirect_to(@animal, :notice => 'Animal was successfully updated.') }
@@ -75,40 +60,27 @@ class AnimalsController < ApplicationController
     
   def destroy
     @animal = Animal.find(params[:id])
-    #if @animal.destroy
-    # flash[:notice] = "El elemento ha sido borrado exitosamente"
-    #else
-    #  flash[:error] = "problemas en la eliminacion"
-    #end
-		#redirect_to animals_path
-    if @animal.destroy
+    @animal.destroy
       respond_to do |format|
         format.html { redirect_to(animals_url, :notice =>  "Animal Deleted")}
         format.xml  { head :ok }
-      end
-     else
-       respond_to do |format|
-        format.html { redirect_to(animals_url, :error =>  "Error Animal NO Deleted")}
-       end
-     end
-    end
+      end   
+  end
     
-    def search
-      if params[:client]!=nil && params[:client]!=""
-        cliente=Client.where('idDocument= ?', params[:client])
-        
-        if cliente.count!=0
-          @animals=Animal.where("client_id= ?",cliente[0].id)
-        end
-        @animal=Animal.new
-        #@algo=cliente[0].name
-      else
-        @animal=Animal.new(params[:animal])        
-        @animals=Animal.find(:all, :conditions => ["name= ?", @animal.name])
-      end              
-      respond_to do |format|
+  def search
+     params[:name]||=[]
+     params[:document]||=[]
+     @animals=Animal.search_name_and_client(params[:name],params[:document]).paginate(:per_page=>1, :page=>params[:page]) unless (params[:document].empty? or params[:name].empty?) 
+     @animals=Animal.search_client(params[:document]).paginate(:per_page=>1, :page=>params[:page]) unless params[:document].empty? or params[:name].present?
+      #solo por nombre
+     @animals=Animal.search_name(params[:name]).paginate(:per_page=>1, :page=>params[:page]) unless params[:name].empty? or params[:document].present?
+     @animals||=[]
+     respond_to do |format|
         format.html # search.html.erb
         format.xml  { render :xml => @animals }
+        format.js {render 'search.js.erb'}
       end
     end
+    
+    
 end

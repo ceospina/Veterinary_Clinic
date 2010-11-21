@@ -29,6 +29,8 @@
 	<div>
 		<br>
 		<% if can? :create, Animal  %>
-		<%= link_to "Nuevo animal", new_animal_path, :id => "new"%>
+		<%= link_to "Nuevo animal", new_animal_path%> |
 		<%end%>
+	  <%= link_to "Buscar animal", search_animals_path%>
+
 	</div>

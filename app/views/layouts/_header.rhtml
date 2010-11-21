@@ -16,29 +16,86 @@
       <%= link_to logo, root_path %>       
     </div>
     
-    <% if can? :read, :all  %>
-    <nav class="round">
-      <ul>        
-              <li><%= link_to "Consultas", consultas_path%></li> 
-              <li><%= link_to "Tipos consulta", type_consults_path%></li>
-              <li><%= link_to "Citas", meetings_path%></li> 
-              <li><%= link_to "Horarios", horaries_path%></li> 
-              <li><%= link_to "Doctores", doctors_path%></li>
-              <li><%= link_to "Especies", species_index_path%></li>
-              <li><%= link_to "Razas", breeds_path%></li>
-              <li><%= link_to "Clientes", clients_path%></li> 
-              <li><%= link_to "Animales", animals_path%></li>          
-      </ul>
-    </nav>
+   
+   
+      <div id="menu" class="round">
+        <ul class="menu" >
+         
+         <% if can? :read, :all  %>
+           
+         <li><a href = "#" class = "parent">Registro</a>
+            <div>
+              <ul>
+                <li> <%= link_to "Animales", animals_path, :class=> "parent"%></li>  
+                <li><%= link_to "Clientes", clients_path, :class=> "parent"%></li>
+                <li><%= link_to "Doctores", doctors_path, :class=> "parent"%></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href = "#" class = "parent">Consultas</a>
+            <div>
+              <ul>
+                <li><%= link_to "Consultas", consultas_path, :class=> "parent"%></li>
+                <li><%= link_to "Tipos consulta", type_consults_path, :class=> "parent"%></li>
+                <li><a href = "#" class = "parent">Historia Clinica</a></li>
+              </ul>
+            </div>
+          </li>
+          
+          <li><a href = "#" class = "parent">Citas</a>
+            <div>
+              <ul>
+                <li><%= link_to "Horarios", horaries_path, :class=> "parent"%></li>
+                <li><%= link_to "Citas", meetings_path, :class=> "parent"%></li>
+               </ul>
+            </div>
+          </li>
+          
+          <li><a href = "#" class = "parent">Especies</a>
+            <div>
+              <ul>
+                <li><%= link_to "Especies", species_index_path, :class=> "parent"%></li>
+                <li><%= link_to "Razas", breeds_path, :class=> "parent"%></li>
+               </ul>
+            </div>
+          </li>
+  
     <%end%>
+    
     <% if can? :read, :home%>
-    <nav class="round">
-      <ul>        
-          <li><%= link_to "Home", pages_home_path %></li>
-          <li><%= link_to "About", pages_about_path%></li>
-          <li><%= link_to "Contact", pages_contact_path %></li>
-          <li><%= link_to "News", pages_noticias_path%></li>      
-      </ul>
-    </nav>
+
+            
+          <li><%= link_to "Home", pages_home_path, :class=> "parent" %></li>         
+          <li><%= link_to "News", pages_noticias_path, :class=> "parent"%></li>      
+          <li>
+            <%= link_to "Services", pages_servicios_path, :class=> "parent"%>    
+            <div>
+                <ul>               
+                  <li><%= link_to "Citas", '#', :class=> "parent"%></li>
+                 </ul>
+            </div>  
+          </li>
+          <li><%= link_to "Clasificados", pages_clasificados_path, :class=> "parent" %></li>     
+    <%end%> 
+    
+    <%if can? :manage, :all%>
+      <li><a href = "#" class = "parent">Admon</a>
+        <div>
+          <ul>
+            <li><%= link_to "Roles", roles_path , :class=> "parent"%></li>
+            <li>
+              <%= link_to "Usuarios", users_path , :class=> "parent"%>
+              <div>
+              <ul>
+                <li><%= link_to "Enviar Correo", correo_users_path, :class=> "parent"%></li>
+              </ul>
+              </div>
+             </li>
+          </ul>
+        </div>  
+      </li>
     <%end%>
+    
+    </ul>
+    </div>
 </header>

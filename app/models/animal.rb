@@ -1,7 +1,8 @@
 class Animal < ActiveRecord::Base
   #attr_accessible :name, :email
   #uniqueses
-
+  
+  attr_accessible :name, :birthDay, :sex, :description, :spayed, :diet, :breed_id, :client_id, :habitat
 	belongs_to :breed, :foreign_key=>'breed_id'
 	belongs_to :client
 	has_many :consultas
@@ -17,5 +18,18 @@ class Animal < ActiveRecord::Base
 	def self.for_select
 	 all.collect{|c| [c.name, c.id]}
 	end
+	
+	def self.search_client(document)
+	 joins(:client).where('idDocument LIKE ?',"%#{document}%" )
+	end
+	
+	def self.search_name(name)
+	  where("name LIKE ?", "%#{name}%")
+	end
+	
+	def self.search_name_and_client(name,document)
+    joins(:client).where('animals.name LIKE ? and clients.idDocument LIKE ?', "%#{name}%", "%#{document}%" )
+  end
+ 
 	
 end

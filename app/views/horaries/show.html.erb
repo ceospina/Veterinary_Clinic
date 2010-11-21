@@ -3,12 +3,12 @@
 <hr>
 <div id="show">
   <%= image_tag "logoCUL.bmp", {:style => "float:right;"} %> 
-  <h4>Dia: </h4><p><%=@horary.day %>
+  <h4>Dia: </h4><p><%=@horary.day.strftime(" %A, %d %B %Y") %>
   <h4>Hora inicio: </h4><p>
-    <%= "#{@horary.startTime.hour}"+"-"+"#{@horary.startTime.min}"+"-"+"#{@horary.startTime.sec}"%>
+    <%= @horary.startTime.strftime("%I:%M %p")%>
     
   <h4>Hora final: </h4><p>
-    <%= "#{@horary.finalHour.hour}"+"-"+"#{@horary.finalHour.min}"+"-"+"#{@horary.finalHour.sec}"%>
+    <%= @horary.finalHour.strftime("%I:%M %p")%>
 
   <h4>Doctor: </h4><p><%= @horary.doctor.name %>
   </div>

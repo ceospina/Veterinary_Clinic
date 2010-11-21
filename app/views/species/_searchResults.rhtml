@@ -1,0 +1,20 @@
+<div id="accordion">
+    <% @species.each do |specie|%>
+      <h3><a href="#">Ver <%= specie.name%></a></h3>
+        <div>
+          <ul>
+            <li><%= specie.name %></li>
+            <li><%= specie.description%></li>
+            <li><%= link_to "Show", species_path(specie) %> 
+            <%if can? :update, Species %>
+            | <%= link_to 'Edit', edit_species_path(specie) %>
+            <%end%>
+           <%if can? :destroy, Species %>
+            | <%= link_to 'Destroy', species_path(specie), :confirm => 'Are you sure?', :method => :delete %>
+            <%end%>
+            </li>
+          </ul>
+        </div>
+    <% end %>
+    </div>
+    <%= will_paginate @species unless @species.empty?%>

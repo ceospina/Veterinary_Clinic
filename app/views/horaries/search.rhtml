@@ -1,0 +1,18 @@
+<h3>Buscar Horario</h3>
+  <%form_for :horary, :url => search_horaries_path, :html => {:method => :get, :id => "search"}  do |f|%>
+     
+      <div>Nombre del doctor
+        <input type="text" size="25"  name="doctor">
+        Fecha
+        <input type="text" id="datepicker" size="30" name="date">
+        (AAAA-MM-DD) 
+        <%= f.submit 'Buscar'%>
+      </div>
+
+  <%end%>
+
+    <div id = "partials">
+      <%= render 'searchResults'%>
+    </div>
+
+

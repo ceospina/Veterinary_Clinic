@@ -1,0 +1,17 @@
+<h3>Buscar consultas</h3>
+  <%form_for :consulta, :url => search_consultas_path, :html => {:method => :get, :id => "search"}  do |f|%>
+      <div>Nombre
+        <input type="text" size="25"  name="nameAnimal">
+        Fecha
+        <input type="text" id="datepicker" size="30" name="date">
+        (AAAA-MM-DD) 
+        <%= f.submit 'search'%>
+      </div>
+  <%end%> 
+
+    <div id = "partials">
+      <%= render 'searchResults'%>
+    </div>
+
+
+

@@ -1,10 +1,14 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
+gem 'rails', '3.0.3'
 gem 'devise'
 gem 'validates_timeliness', '~> 3.0.0'
 gem "mail"
 gem "cancan"
+gem 'jquery-rails', '>=0.2.5'  
+gem 'will_paginate', '3.0.pre2'
+gem "meta_where" 
+gem 'meta_search'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

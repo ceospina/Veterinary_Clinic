@@ -70,5 +70,26 @@ load_and_authorize_resource
        end
      end
   end
+  
+  def search
+     params[:nameAnimal]||=[]
+     params[:date]||=[]
+     
+     @consultas=Consulta.search_animal_and_date(params[:nameAnimal], params[:date]).paginate(:per_page=>1, :page=>params[:page]) unless (params[:nameAnimal].empty? or params[:date].empty?)
+     @consultas=Consulta.search_animal(params[:nameAnimal]).paginate(:per_page=>1, :page=>params[:page]) unless params[:nameAnimal].empty? or params[:date].present?   
+     #solo por fecha
+     @consultas=Consulta.search_date(params[:date]).paginate(:per_page=>1, :page=>params[:page]) unless params[:date].empty? or params[:nameAnimal].present?
+     
+     @consultas||=[]
+    
+        
+      respond_to do |format|
+        format.html # search.html.erb
+        format.xml  { render :xml => @consultas }
+        format.js {render 'search.js.erb'}
+      end
+    
+  end
+  
 	
 end

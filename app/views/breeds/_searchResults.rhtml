@@ -1,0 +1,23 @@
+<div id="accordion">
+    <% @breeds.each do |breed|%>
+      <h3><a href="#">Ver <%= breed.name%></a></h3>
+        <div>
+          <ul>
+            <li><%= breed.name %></li>
+            <li><%= breed.description%></li>
+            <li><%= link_to 'Show', breed %> 
+             <%if can? :update, Breed%>
+              | <%= link_to 'Edit', edit_breed_path(breed) %>
+             <%end%>
+             <%if can? :destroy, Breed%>
+              | <%= link_to 'Destroy', breed, :confirm => 'Are you sure?', :method => :delete %>
+             <%end%>
+             </li>
+          </ul>
+        </div>
+    <% end %>
+    </div>
+    <%= will_paginate @breeds unless @breeds.empty?%>
+    
+
+    

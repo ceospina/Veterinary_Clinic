@@ -1,62 +1,14 @@
       <h3>Busqueda de animales</h3>
-       <%form_for :animal, :url => search_animals_path, :html => {:method => :get}  do |f|%>
-       <% if @animal.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@animal.errors.count, "error") %> prohibited this user from being saved:</h2>
-            <ul>
-            <% @animal.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-            </ul>
-          </div>
-      <% end %>
-      <div>
-        <%= f.label :name%>
-        <%= f.text_field :name %>
-        
-        
-        <input type="text" size="25"  name="client">
-        
-      </div>
-      <div class="actions">
-        <%= f.submit %>
-      </div>
-      <%end%>
-      
-      <%=@algo%>
-
-<%if @animals.nil? || @animals.empty?%>
-  <div>
-    <h3>NO HAY RESULTADOS PARA <%=@animal.name%></h3>
-  </div> 
-<%else%>
-<h3>RESULTADOS PARA <%=@animal.name%></h3>
-    <table id="index">
-      <tr>
-        <th>Nombre</th>
-        <th>Fecha Nacimiento</th>
-        <th>Sexo</th>
-        <th>Dueno</th>
-        <th>Raza</th>     
-      </tr>
-      <% @animals.each do |animal|%>
-        <tr>
-          <td><%= animal.name %></td>
-          <td><%= animal.birthDay %></td> 
-          <td><%= animal.sex? ? "Macho" : "Hembra" %></td>          
-          <td><%= animal.client.name%></td>
-          <td><%= animal.breed.name%></td>
-          <td><%= link_to 'Show', animal_path(animal) %></td>
-          <td><%= link_to 'Edit', edit_animal_path(animal) %></td>
-          <td><%= link_to 'Delete',animal,:confirm =>'are you sure?', :method => :delete%></td>
-        </tr>
-      <% end %>
-    </table>
-  <div>
-    <br>
-    <% if can? :create, Animal  %>
-    <%= link_to "Nuevo animal", new_animal_path, :id => "new"%>
-    <%end%>
-  </div>
-  
-<%end%>
+       <%form_for :animal, :url => search_animals_path, :html => {:method => :get,  :id => "search"}   do |f|%>
+             <div>
+            Animal Name
+            <input type="text" size="25"  name="name">         
+            Document
+            <input type="text" size="25"  name="document">          
+           <%= f.submit "Search"%>          
+          </div>          
+      <%end%>         
+    <div id='partials'>
+    <%= render 'searchpartial'%>
+    </div>
+ 

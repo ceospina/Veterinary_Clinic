@@ -1,0 +1,18 @@
+<div id="accordion">
+    <% @horaries.each do |horary|%>
+      <h3><a href="#">Dia: <%=horary.day.strftime(" %A, %d %B %Y")%></a></h3>
+        <div>
+          <ul>
+            <li><%= horary.doctor.name %></li>
+            <li><%= horary.startTime.strftime("%I:%M %p")%></li>
+            <li><%= horary.finalHour.strftime("%I:%M %p")%></li>
+            <li><%= link_to 'Show', horary %>
+            | <%= link_to 'Edit', edit_horary_path(horary) %>
+            | <%= link_to 'Destroy', horary, :confirm => 'Are you sure?', :method => :delete %>
+            </li> 
+  
+          </ul>
+        </div>
+    <% end %>
+  </div>
+    <%= will_paginate @horaries unless @horaries.empty?%>

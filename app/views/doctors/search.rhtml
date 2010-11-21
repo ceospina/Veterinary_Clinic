@@ -1,0 +1,20 @@
+<h3>Buscar Doctor</h3>
+  <%form_for :doctor, :url => search_doctors_path, :html => {:method => :get, :id => "search"}  do |f|%>
+      
+      <div>Nombre
+        <input type="text" size="25"  name="name">
+        Cedula
+        <input type="text" size="25"  name="document">
+         <%= f.submit 'Buscar'%>
+      </div>
+              
+
+
+  <%end%>
+ 
+
+
+    <div id = "partials">
+      <%= render 'searchResults'%>
+    </div>
+

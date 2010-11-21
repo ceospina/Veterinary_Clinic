@@ -1,0 +1,31 @@
+<h3><%= @user == @current_user ? "Your Account Settings" : "Edit User" %></h3>
+ 
+<%= form_for(@user, :html => { :method => :put }) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= render :partial => 'user_fields', :locals => { :f => f } %>
+ 
+  <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i></p>
+  <p><%= f.password_field :password %></p>
+ 
+  <p><%= f.label :password_confirmation %></p>
+  <p><%= f.password_field :password_confirmation %></p>
+ 
+  <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i></p>
+  <p><%= f.password_field :current_password %></p>
+ 
+  <p><%= f.submit "Update" %></p>
+<% end %>
+
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>

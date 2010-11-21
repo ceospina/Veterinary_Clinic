@@ -11,8 +11,11 @@ VeterinaryClinic::Application.routes.draw do
   get "pages/noticias"
 
   get "pages/clasificados"
+  
+  
 
-  devise_for :users
+
+  
  # resources :application do 
  #   get 'error', :on => :member 
  # end 
@@ -73,18 +76,35 @@ VeterinaryClinic::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
-  resources :consultas
+  resources :consultas do 
+    get 'search', :on => :collection
+  end
   resources :animals do
      get 'search', :on => :collection
   end 
-  resources :clients
-  resources :breeds
-  resources :species
-  resources :doctors
-  resources :horaries
+  resources :roles
+  resources :clients  do
+     get 'search', :on => :collection
+  end 
+  resources :breeds  do
+     get 'search', :on => :collection
+  end 
+  resources :species  do
+     get 'search', :on => :collection
+  end 
+  resources :doctors  do
+     get 'search', :on => :collection
+  end 
+  resources :horaries  do
+     get 'search', :on => :collection
+  end 
   resources :meetings
   resources :type_consults
-  
+  resources :roles_users
+  devise_for :users
+  resources :users do
+    get 'correo', :on=>:collection
+  end
 
-  
+  match '*a', :to => 'error#routing'
 end

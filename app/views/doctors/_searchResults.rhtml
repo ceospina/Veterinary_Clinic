@@ -1,0 +1,21 @@
+<div id="accordion">
+    <% @doctors.each do |doctor|%>
+      <h3><a href="#"><%=doctor.name%> <%=doctor.lastName%></a></h3>
+        <div>
+          <ul>
+            <li><%= doctor.name %></li> 
+            <li><%= doctor.lastName %></li> 
+            <li><%= doctor.idDocument %></li>
+            <li><%= link_to 'Show', doctor %>
+            <%if can? :update, Doctor%>
+            | <%= link_to 'Edit', edit_doctor_path(doctor) %>
+            <%end%>
+            <%if can? :destroy, Doctor%>
+            | <%= link_to 'Destroy', doctor, :confirm => 'Are you sure?', :method => :delete %>
+            <%end%>
+            </li>
+          </ul>
+        </div>
+    <% end %>
+    </div>
+    <%= will_paginate @doctors unless @doctors.empty?%>

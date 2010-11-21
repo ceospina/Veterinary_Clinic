@@ -8,7 +8,7 @@ class PagesController < ApplicationController
   def servicios
   end
 
-  def citas
+  def about
   end
 
   def noticias

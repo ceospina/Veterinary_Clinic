@@ -1,5 +1,7 @@
 class Breed < ActiveRecord::Base
 	has_many :animals
+	attr_accessible :name, :description, :specie_id
+	validates_uniqueness_of :name
 	belongs_to :species, :foreign_key=>'specie_id'
 	validates_associated :species
 	validates_presence_of :name,:description,:specie_id
@@ -9,5 +11,19 @@ class Breed < ActiveRecord::Base
 	def self.for_select
    all.collect{|c| [c.name, c.id]}
   end
-		
+	
+
+	def self.for_specie(specie)
+	  joins(:species).where("species.name LIKE ?", "%#{specie}%")
+	end
+	
+	def self.for_name(name)
+	  where("name LIKE ?", "%#{name}%")
+	end
+	
+	def self.for_name_and_specie(name,specie)
+	  joins(:species).where("species.name LIKE ? and breeds.name LIKE ?", "%#{specie}%","%#{name}%" )
+	end
+	
+	
 end

@@ -82,4 +82,17 @@ load_and_authorize_resource
       format.xml  { head :ok }
     end
   end
+  
+   def search
+     params[:name]||=[]
+     #solo por nombre
+     @species=Species.for_name(params[:name]).paginate(:per_page=>5, :page=>params[:page]) unless params[:name].empty? 
+     @species||=[]
+      respond_to do |format|
+        format.html # search.html.erb
+        format.xml  { render :xml => @species }
+        format.js {render 'search.js.erb'}
+      end
+    
+  end
 end

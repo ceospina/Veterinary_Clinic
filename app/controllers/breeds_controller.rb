@@ -66,4 +66,26 @@ load_and_authorize_resource
        end
      end 
   end
+  
+  def search
+     params[:name]||=[]
+     params[:specie]||=[]
+     #por nombre y especie
+     @breeds=Breed.for_name_and_specie(params[:name],params[:specie]).paginate(:per_page=>5, :page=>params[:page]) unless (params[:name].empty? or params[:specie].empty?) 
+     #solo por especie
+     @breeds=Breed.for_specie(params[:specie]).paginate(:per_page=>1, :page=>params[:page]) unless params[:specie].empty? or params[:name].present?
+     #solo por nombre
+     @breeds=Breed.for_name(params[:name]).paginate(:per_page=>1, :page=>params[:page]) unless params[:name].empty? or params[:specie].present?  
+     @breeds||=[]
+      respond_to do |format|
+        format.html # search.html.erb
+        format.xml  { render :xml => @breeds }
+        format.js {render 'search.js.erb'}
+      end
+    
+  end
+  
+  def paginate
+    paginate(:per_page=>1, :page=>params[:page])
+  end
 end

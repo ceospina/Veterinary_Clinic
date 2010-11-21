@@ -43,16 +43,32 @@ load_and_authorize_resource
   # POST /horaries.xml
   def create
     @horary = Horary.new(params[:horary])
-
-    respond_to do |format|
-      if @horary.save
-        format.html { redirect_to(@horary, :notice => 'Horary was successfully created.') }
-        format.xml  { render :xml => @horary, :status => :created, :location => @horary }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @horary.errors, :status => :unprocessable_entity }
+    hry=Horary.where('doctor_id=? and day=?',@horary.doctor_id, @horary.day )
+    
+    hry.each do |h|
+      if (@horary.startTime>h.startTime && @horary.startTime<h.finalHour) 
+        @horary.errors[:base] << "The Horary exists" 
+      elsif (@horary.finalHour>h.startTime && @horary.finalHour<h.finalHour)
+        @horary.errors[:base] << "The Horary exists"
       end
     end
+    
+      respond_to do |format|
+        if  @horary.errors[:base].empty? &&  @horary.save
+            hora=@horary.startTime    
+            while hora<@horary.finalHour do
+              c=Meeting.new(:meetingDate=>@horary.day,:meetingHour=>hora,:doctor_id=>@horary.doctor_id)
+              c.save
+              hora=hora.advance(:minutes=>20)
+            end
+       
+          format.html { redirect_to(@horary, :notice => 'Horary was successfully created.') }
+          format.xml  { render :xml => @horary, :status => :created, :location => @horary }
+        else
+            format.html { render :action => "new" }
+            format.xml  { render :xml => @horary.errors, :status => :unprocessable_entity }
+        end        
+      end
   end
 
   # PUT /horaries/1
@@ -81,5 +97,30 @@ load_and_authorize_resource
       format.html { redirect_to(horaries_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def search
+     params[:doctor]||=[]
+     params[:date]||=[]
+     
+     #@consulta= Consulta.new(:date=>'') unless params[:consulta]
+     #@consulta||=Consulta.new(params[:consulta])
+     #por nombre y fecha
+     @horaries=Horary.search_doctor_and_date(params[:doctor], params[:date]).paginate(:per_page=>5, :page=>params[:page]) unless (params[:doctor].empty? or params[:date].empty?)
+    # @horaries||=[]
+     #solo por nombre
+     @horaries=Horary.search_doctor(params[:doctor]).paginate(:per_page=>5, :page=>params[:page]) unless params[:doctor].empty? or params[:date].present?
+     #solo por fecha
+     @horaries=Horary.search_date(params[:date]).paginate(:per_page=>5, :page=>params[:page]) unless params[:date].empty? or params[:doctor].present?
+     @horaries||=[]
+
+    
+        
+      respond_to do |format|
+        format.html # search.html.erb
+        format.xml  { render :xml => @consultas }
+        format.js {render 'search.js.erb'}
+      end
+    
   end
 end

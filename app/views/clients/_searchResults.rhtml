@@ -1,0 +1,21 @@
+<div id="accordion">
+    <% @clients.each do |client|%>
+      <h3><a href="#"><%=client.name%> <%=client.lastName%></a></h3>
+        <div>
+          <ul>
+            <li><%= client.name %></li> 
+            <li><%= client.lastName %></li> 
+            <li><%= client.idDocument %></li>
+            <li><%= link_to 'Show', client %>
+            <%if can? :update, Client%>
+            | <%= link_to 'Edit', edit_client_path(client) %>
+            <%end%>
+            <%if can? :destroy, Client%>
+            | <%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %>
+            <%end%>
+            </li>
+          </ul>
+        </div>
+    <% end %>
+    </div>
+    <%= will_paginate @clients unless @clients.empty?%>

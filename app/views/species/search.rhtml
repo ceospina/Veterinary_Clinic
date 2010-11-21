@@ -1,0 +1,18 @@
+<h3>Buscar Especie</h3>
+  <%form_for :species, :url => search_species_index_path, :html => {:method => :get, :id => "search"}  do |f|%>
+
+      
+      
+      <div>Nombre
+         <input type="text" size="25"  name="name"> 
+         <%= f.submit 'Buscar'%>
+      </div>
+              
+ <%end%>
+
+
+    <div id = "partials">
+      <%= render 'searchResults'%>
+    </div>
+
+

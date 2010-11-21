@@ -1,48 +1,241 @@
-     /* The CSS Code for the menu starts here */
-#menu {
-  font-family: arial, verdana, sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 0;
-  list-style-type: none;
-  background-color: #eee;
-  font-size: 13px;
-  height: 40px;
-  border-top: 2px solid #eee;
-  border-bottom: 2px solid #ccc;
-  margin: 0;
-}
-      
-#menu li {
-  float: right;
-  margin: 0;        
-}
-#menu li a {
-  text-decoration: none;
-  display: block;
-  padding: 0 20px;
-  line-height: 40px;
-  color: #666;
+/**
+ *********************************************
+ * Prototype of styles for horizontal CSS-menu
+ * @data 30.06.2009
+ *********************************************
+ * (X)HTML-scheme:
+ *  <div id="menu">
+ *      <ul class="menu">
+ *          <li><a href="#" class="parent"><span>level 1</span></a>
+ *              <ul>
+ *                  <li><a href="#" class="parent"><span>level 2</span></a>
+ *                      <ul><li><a href="#"><span>level 3</span></a></li></ul>
+ *                  </li>
+ *              </ul>
+ *          </li>
+ *          <li class="last"><a href="#"><span>level 1</span></a></li>
+ *      </ul>
+ *  </div>
+ *********************************************
+ */
+
+/* menu::base */
+div#menu {
+    float: right;
+    height: 51px;
+    padding-left: 14px;
+    background: url(images/left.png) no-repeat;
+    _background: url(images/left.gif) no-repeat;
+    width:auto;
+
 }
 
-#menu li a:hover, #menu li.active a {
-  background-color: #f5f5f5;
-  border-bottom: 2px solid #DDD;
-  color: #999;
+div#menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
 }
-      
-#menu_wrapper ul {margin-left: 12px;}
-#menu_wrapper {padding: 0 16px 0 0; background: url(images/grey.png) no-repeat right;}
-#menu_wrapper div {float: left; height: 44px; width: 12px; background: url(images/grey.png) no-repeat left;}
-      
-/* Blue Menu */
-#menu_wrapper.blue ul {
-  border-top: 2px solid #356AA0;
-  border-bottom: 2px solid #204061;
-  background: #356AA0;
+div#menu ul.menu {
+    padding-right: 14px;
+    background: url(images/right.png) no-repeat right 0;
+    _background: url(images/right.gif) no-repeat right 0;    
 }
-  #menu_wrapper.blue a {color: #fff;}
-  #menu_wrapper.blue li a:hover, #menu_wrapper.blue li.active a {color: #90CDFF; background: #3D7BBB; border-bottom: 2px solid #356AA0;}
-  #menu_wrapper.blue {background: url(images/blue.png) no-repeat right;}
-  #menu_wrapper.blue div {background: url(images/blue.png) no-repeat left;}
-      
+
+div#menu li {
+    position: relative;
+    margin: 0;
+    padding: 0 0px 0 0;
+    display: block;
+    float: left;
+    z-index: 9;
+    width: auto;
+}
+div#menu ul ul li {
+    z-index: 9;
+}
+div#menu li div {
+    list-style: none;
+    float: left;
+    position: absolute;
+    z-index: 11;
+    top: 51px;
+    left: -13px;
+    visibility: hidden;
+    width: 194px;
+	  margin: 0px 0 0 -4px;
+    padding: 0; 
+    background: url(images/subsubmenu-top.png) no-repeat 0px 0;
+    _background: url(images/subsubmenu-top.gif) no-repeat 0px 0;  
+}
+div#menu ul ul {
+	  z-index: 12;
+    padding: 0px 4px 10px 4px;
+    background: url(images/submenu-bottom.png) no-repeat 0px bottom;
+    _background: url(images/submenu-bottom.gif) no-repeat 0px bottom;        
+    margin: 10px 0 0 0;    
+}
+div#menu li:hover>div {
+    visibility: visible;
+}
+
+div#menu a {
+    position: relative;
+    z-index: 10;
+    height: 50px;
+    display: block;
+    float: left;
+    line-height: 50px;
+    text-decoration: none;
+    margin-top: 1px;
+    margin-left: 15px;
+    white-space: nowrap;
+    width: auto;
+    padding-right:5px;
+    text-align:center;
+    color: #A6C4D5;
+    font-weight: bold;
+}
+/*div#menu span {
+    margin-top: 2px;
+    padding-left: 15px;
+    color: #A6C4D5;
+    font: bold 13px Arial,Helvetica;
+    background: none;
+    line-height: 50px;	
+    display: block;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: 95% 0;
+    text-align: center;
+}*/
+
+/* menu::level1 */
+div#menu a {
+    padding: 0 10px 0 0;
+    line-height: 50px;
+    height: 51px;
+    margin-right: 5px;
+    _margin-right: 1px;
+    background: none;
+}
+div#menu a:hover {
+    background:  url(images/selected.png)  repeat-x right -1px;
+	  color: #FFFFFF;
+  }
+div#menu li.current a,
+div#menu ul.menu>li:hover>a {
+	  color: #FFFFFF;	
+    background: url(images/selected.png)  repeat-x right -1px;
+}
+
+div#menu ul.menu>li:hover>a span {
+		color: #FFFFFF;
+}
+div#menu li {  }
+div#menu li.last { background: none; }
+
+/* menu::level2 */
+div#menu ul ul li {
+    background: none;
+    padding: 0;
+}
+div#menu ul ul a {
+    padding: 0px;
+    height: auto;
+    float: none;
+    display: block;
+    line-height: 25px;
+    z-index: -1;
+    padding-left: 5px;
+    white-space: normal;
+    width: 164px;
+    margin: 0 8px;
+    text-transform: none;
+    border-top: 1px solid #3A5A8B;
+    border-bottom: 1px solid #162133;        
+}
+    
+div#menu ul ul a span {
+    font-weight:normal;
+	  padding: 0 5px;
+    line-height: 25px;
+    font-size: 12px;
+    color: #C5D3E7;
+}
+div#menu li.current ul a,
+div#menu li.current ul a span {
+    background:none;
+}
+div#menu ul ul a:hover {
+ background:none;
+ background-color: #21345A;
+}
+div#menu ul ul a:hover span {
+	background:none;
+	color: #FFFFFF;
+}
+div#menu ul ul a.parent {
+  background: url(images/submenu-pointer.png) no-repeat right bottom;
+  _background: url(images/submenu-pointer.gif) no-repeat right bottom;  
+}
+div#menu ul ul a.parent span {
+  background:none; 
+}
+div#menu ul ul a.parent:hover {
+  background: url(images/submenu-pointer.png) no-repeat right bottom;
+  _background: url(images/submenu-pointer-hover.gif) no-repeat right bottom;
+  background-color: #21345A;
+	color: #FFFFFF;  
+}
+div#menu ul ul a.parent:hover span {
+  background:none; 
+}
+div#menu ul ul span {
+	
+    margin-top: 0;
+    text-align: left;
+}
+div#menu ul ul li.last { background: none; }
+div#menu ul ul li {
+    width: 100%;
+}
+
+/* menu::level3 */
+div#menu ul ul div {
+	  width: 194px;
+	  padding: 0;
+    margin: -51px 0 0 192px !important;
+    margin-left: 192px;
+}
+div#menu ul ul ul {
+    padding: 10px 4px 0 4px;	
+}
+div#menu ul ul div li {
+    position:relative;
+    top:-10px;
+}
+
+/* lava lamp */
+div#menu li.back {
+    background: url(images/selected.png) repeat-x 0 0;
+    width: 5px;
+    height: 51px;
+    z-index: 8;
+    position: absolute;
+    padding: 0;
+    margin: 0px 0 0 0;
+}
+
+div#menu li.back .left {
+    padding:0;
+    width:auto;
+    background: url(images/selected.png) repeat-x right 0;
+    height: 51px;
+    margin: 0 0 0 5px;
+    float: none;
+    position: relative;
+    top: 0;
+    left: 0;
+    visibility: visible;
+}

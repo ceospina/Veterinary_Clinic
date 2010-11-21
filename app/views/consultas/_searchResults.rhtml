@@ -1,0 +1,14 @@
+<div id="accordion">
+    <% @consultas.each do |consulta|%>
+      <h3><a href="#">Nombre: <%=consulta.animal.name%>  Fecha: <%=consulta.date %></a></h3>
+        <div>
+          <ul>
+            <li><%= consulta.animal.name %></li>
+            <li><%= consulta.doctor.name %></li>
+            <li><%= consulta.date %></li>
+            <li><%= link_to "Show", consulta %> </li>
+          </ul>
+        </div>
+    <% end %>
+</div>
+<%= will_paginate @consultas unless @consultas.empty?%>

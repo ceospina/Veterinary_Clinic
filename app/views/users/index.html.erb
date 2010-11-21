@@ -1,0 +1,31 @@
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Last Name</th>
+    <th>Correo</th>
+  </tr>
+
+<% @users.each do |u| %>
+  <tr>
+     
+    <td><%= "#{u.first_name}" %></td>
+    <td><%= "#{u.last_name}" %></td>
+    <td><%= "#{u.email}" %></td>
+    <%if can? :manage, :all%>
+    <td><%= "#{u.roles.collect{|r| r.name}}" %></td>
+    <%end%>
+    <% if can? :read, User  %>
+          <td><%= link_to 'Show', u%></td>
+     <%end%>
+    <td><%= link_to_if(can?(:update, User), "Edit", edit_user_path(u.id)) {} %></td>
+    <td><%= link_to_if(can?(:manage, :all), 'Delete',u,:confirm =>'are you sure?', :method => :delete) {} %></td>
+  </tr>
+  
+<% end %>
+</table>
+
+<br />
+
+<%= link_to_if(can?(:manage, :all), 'New User', new_user_path){} %>
