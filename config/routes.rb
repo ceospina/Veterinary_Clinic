@@ -98,7 +98,10 @@ VeterinaryClinic::Application.routes.draw do
   resources :horaries  do
      get 'search', :on => :collection
   end 
-  resources :meetings
+  resources :meetings  do
+     get 'empty', :on => :collection
+  end 
+
   resources :type_consults
   resources :roles_users
   devise_for :users

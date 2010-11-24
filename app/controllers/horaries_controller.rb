@@ -43,25 +43,9 @@ load_and_authorize_resource
   # POST /horaries.xml
   def create
     @horary = Horary.new(params[:horary])
-    hry=Horary.where('doctor_id=? and day=?',@horary.doctor_id, @horary.day )
-    
-    hry.each do |h|
-      if (@horary.startTime>h.startTime && @horary.startTime<h.finalHour) 
-        @horary.errors[:base] << "The Horary exists" 
-      elsif (@horary.finalHour>h.startTime && @horary.finalHour<h.finalHour)
-        @horary.errors[:base] << "The Horary exists"
-      end
-    end
-    
+    @horary.day="#{@horary.startTime.year}-#{@horary.startTime.month}-#{@horary.startTime.day}"
       respond_to do |format|
-        if  @horary.errors[:base].empty? &&  @horary.save
-            hora=@horary.startTime    
-            while hora<@horary.finalHour do
-              c=Meeting.new(:meetingDate=>@horary.day,:meetingHour=>hora,:doctor_id=>@horary.doctor_id)
-              c.save
-              hora=hora.advance(:minutes=>20)
-            end
-       
+        if @horary.save and Horary.create_meetings(@horary)
           format.html { redirect_to(@horary, :notice => 'Horary was successfully created.') }
           format.xml  { render :xml => @horary, :status => :created, :location => @horary }
         else
@@ -75,9 +59,9 @@ load_and_authorize_resource
   # PUT /horaries/1.xml
   def update
     @horary = Horary.find(params[:id])
-
+   
     respond_to do |format|
-      if @horary.update_attributes(params[:horary])
+      if @horary.update_attributes(params[:horary]) and Horary.update_meetings(@horary)
         format.html { redirect_to(@horary, :notice => 'Horary was successfully updated.') }
         format.xml  { head :ok }
       else

@@ -19,21 +19,17 @@
   <div>Id dueño:</div>
   <%= f.text_field :ownerId %>
 </div>
-
+<!-->
 <div>
   <div>Fecha de cita:</div>
-  <%= f.date_select :meetingDate %>
+  <%= f.date_select :meetingDate  %>
 </div>
 
 <div>
   <div>Hora de cita:</div>
   <%= f.time_select :meetingHour%>
 </div>
-
-<div>
-  <div>Doctor:</div>
-  <%= Doctors_for_select f%>
-</div>
+<-->
 
   <div class="actions">
     <%= f.submit %>

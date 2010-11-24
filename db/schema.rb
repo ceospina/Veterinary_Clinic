@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101118020228) do
+ActiveRecord::Schema.define(:version => 20101124013646) do
 
   create_table "animals", :force => true do |t|
     t.string   "name",                           :null => false
@@ -37,18 +37,15 @@ ActiveRecord::Schema.define(:version => 20101118020228) do
   create_table "clients", :force => true do |t|
     t.string   "name",                         :null => false
     t.string   "lastName",                     :null => false
-    t.integer  "idDocument",                   :null => false
     t.string   "email"
-    t.integer  "phoneHome"
-    t.integer  "phoneCell"
-    t.integer  "phoneWork"
     t.string   "address",                      :null => false
-    t.integer  "town_id"
     t.boolean  "isowner",    :default => true
-    t.string   "userName"
-    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "idDocument"
+    t.string   "phoneHome"
+    t.string   "phoneCell"
+    t.string   "phoneWork"
   end
 
   create_table "consultas", :force => true do |t|
@@ -78,35 +75,33 @@ ActiveRecord::Schema.define(:version => 20101118020228) do
   create_table "doctors", :force => true do |t|
     t.string   "name",       :null => false
     t.string   "lastName",   :null => false
-    t.integer  "idDocument", :null => false
     t.string   "email"
-    t.integer  "phoneHome"
-    t.integer  "phoneCell"
     t.string   "speciality", :null => false
     t.string   "address",    :null => false
-    t.string   "userName"
-    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "idDocument"
+    t.string   "phoneHome"
+    t.string   "phoneCell"
   end
 
   create_table "horaries", :force => true do |t|
     t.date     "day",        :null => false
-    t.time     "startTime",  :null => false
-    t.time     "finalHour",  :null => false
     t.integer  "doctor_id",  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "startTime"
+    t.datetime "finalHour"
   end
 
   create_table "meetings", :force => true do |t|
     t.date     "meetingDate", :null => false
     t.time     "meetingHour", :null => false
-    t.integer  "doctor_id",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ownerName"
     t.integer  "ownerId"
+    t.integer  "horary_id"
   end
 
   create_table "roles", :force => true do |t|

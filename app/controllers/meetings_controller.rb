@@ -5,13 +5,19 @@ load_and_authorize_resource
   # GET /meetings.xml
   def index
     @meetings = Meeting.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @meetings }
     end
   end
-
+  
+  def empty
+    @meetings=Meeting.where("ownerId=?", 0)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @meetings }
+    end
+  end
   # GET /meetings/1
   # GET /meetings/1.xml
   def show
@@ -42,12 +48,7 @@ load_and_authorize_resource
   # POST /meetings
   # POST /meetings.xml
   def create
-    @meeting = Meeting.new(params[:meeting])    
-   # @horarioDoctor=Horary.find_by_sql("SELECT Horaries.id from Horaries where doctor_id=@meeting.doctor_id and day=@meeting.meetingDate and startTime<=@meeting.meetingHour and finalHour>=@meeting.meetingHour")
-    
-   # if @horarioDoctor!=nil
-   #   @
-   # end
+    @meeting = Meeting.new(params[:meeting])   
     respond_to do |format|
       if @meeting.save
         format.html { redirect_to(@meeting, :notice => 'Meeting was successfully created.') }
@@ -63,7 +64,6 @@ load_and_authorize_resource
   # PUT /meetings/1.xml
   def update
     @meeting = Meeting.find(params[:id])
-
     respond_to do |format|
       if @meeting.update_attributes(params[:meeting])
         format.html { redirect_to(@meeting, :notice => 'Meeting was successfully updated.') }
@@ -80,7 +80,6 @@ load_and_authorize_resource
   def destroy
     @meeting = Meeting.find(params[:id])
     @meeting.destroy
-
     respond_to do |format|
       format.html { redirect_to(meetings_url) }
       format.xml  { head :ok }

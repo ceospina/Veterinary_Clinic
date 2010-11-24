@@ -12,18 +12,18 @@
   <% end %>
 
 <div>
-  <div>Dia:</div>
+ <!--> <div>Dia:</div>
   <%= f.date_select :day, :start_year => Time.now.year, :end_year => Time.now.year%>
 </div>
-
+<-->
 <div>
   <div>Hora inicio:</div>
-  <%= f.time_select :startTime, :minute_step => 20 %>
+  <%= f.datetime_select :startTime, :minute_step => 20 %>
 </div>
 
 <div>
   <div>Hora Final:</div>
-  <%= f.time_select :finalHour, :minute_step => 20 %>
+  <%= f.datetime_select :finalHour, :minute_step => 20 %>
 </div>
 
 <div>

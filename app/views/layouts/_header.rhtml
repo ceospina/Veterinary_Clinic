@@ -20,6 +20,24 @@
    
       <div id="menu" class="round">
         <ul class="menu" >
+          
+       <%if can? :manage, :all%>
+        <li><a href = "#" class = "parent">Admon</a>
+          <div>
+            <ul>
+              <li><%= link_to "Roles", roles_path , :class=> "parent"%></li>
+              <li>
+                <%= link_to "Usuarios", users_path , :class=> "parent"%>
+                <div>
+                <ul>
+                  <li><%= link_to "Enviar Correo", correo_users_path, :class=> "parent"%></li>
+                </ul>
+                </div>
+               </li>
+            </ul>
+          </div>  
+        </li>
+      <%end%>
          
          <% if can? :read, :all  %>
            
@@ -78,23 +96,7 @@
           <li><%= link_to "Clasificados", pages_clasificados_path, :class=> "parent" %></li>     
     <%end%> 
     
-    <%if can? :manage, :all%>
-      <li><a href = "#" class = "parent">Admon</a>
-        <div>
-          <ul>
-            <li><%= link_to "Roles", roles_path , :class=> "parent"%></li>
-            <li>
-              <%= link_to "Usuarios", users_path , :class=> "parent"%>
-              <div>
-              <ul>
-                <li><%= link_to "Enviar Correo", correo_users_path, :class=> "parent"%></li>
-              </ul>
-              </div>
-             </li>
-          </ul>
-        </div>  
-      </li>
-    <%end%>
+
     
     </ul>
     </div>

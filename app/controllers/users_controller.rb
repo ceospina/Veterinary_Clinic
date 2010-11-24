@@ -118,12 +118,15 @@ class UsersController < ApplicationController
    end
    
    def correo
-    # @users=User.all
-     @user=User.new
-     c= (params[:first_name])
-        if c #||='gracias por utilizar la clinica'   
+
+     @user=User.new  
+    # if @user.first_name.present?
+    #     UserMailer.promocion(@user.first_name).deliver #unless params[:email].empty?
+    # end
+     c=(params[:first_name])
+        if c #||='gracias por utilizar la clinica'
           
-          UserMailer.promocion(params[:first_name]).deliver 
+          UserMailer.promocion(params[:first_name]).deliver
           # @users.each { |user| UserMailer.promocion(user,params[:first_name] ).deliver}
         end
    end

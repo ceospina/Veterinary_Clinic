@@ -13,8 +13,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::UnknownAction, :with => :no_encontrado #501
   rescue_from ActionController::RoutingError, :with => :no_encontrado
   rescue_from ActiveRecord::RecordInvalid, :with => :no_encontrado
- 
-  protected
+   protected
   def no_encontrado
      flash[:error] = "Ups something happened, we are working to resolve!"  
      redirect_to root_url  

@@ -1,0 +1,28 @@
+<h1>Listing meetings</h1>
+
+<table id = "index">
+  <tr>
+    <th>Dueño</th>
+    <th>Id dueño</th>
+    <th>Fecha cita</th>
+    <th>Hora cita</th>
+    <th>Doctor</th>
+  </tr>
+
+<% @meetings.each do |meeting| %>
+  <tr>
+    <td><%= meeting.ownerName %></td>
+    <td><%= meeting.ownerId %></td> 
+    <td><%= meeting.meetingDate%></td> 
+    <td><%= meeting.meetingHour%></td>  
+    <td><%= meeting.horary.doctor.name%></td>
+    <td><%= link_to 'Show', meeting %></td>   
+    <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+    <%if can? :manage, :all%>
+    <td><%= link_to 'Destroy', meeting, :confirm => 'Are you sure?', :method => :delete %></td>
+    <%end%>
+  </tr>
+<% end %>
+</table>
+
+<br />
