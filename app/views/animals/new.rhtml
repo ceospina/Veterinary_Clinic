@@ -1,7 +1,6 @@
-<h1>Un nuevo animal</h1>
+<h1>Create Animal</h1>
 <% form_for :animal, :url => animals_path, :html => {:method => :post}  do |f|%>
   <%= render :partial => "form_animal", :locals => {:f => f}%>
 <% end %>
-<% if can? :index, Animal  %>
+
 <%= link_to 'Back', animals_path %>
-<%end%>

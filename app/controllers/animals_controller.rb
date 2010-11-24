@@ -70,10 +70,11 @@ class AnimalsController < ApplicationController
   def search
      params[:name]||=[]
      params[:document]||=[]
-     @animals=Animal.search_name_and_client(params[:name],params[:document]).paginate(:per_page=>1, :page=>params[:page]) unless (params[:document].empty? or params[:name].empty?) 
-     @animals=Animal.search_client(params[:document]).paginate(:per_page=>1, :page=>params[:page]) unless params[:document].empty? or params[:name].present?
+     #@animals=Animal.search_name_and_client(params[:name],params[:document]).paginate(:per_page=>1, :page=>params[:page]) unless (params[:document].empty? or params[:name].empty?) 
+     #@animals=Animal.search_client(params[:document]).paginate(:per_page=>1, :page=>params[:page]) unless params[:document].empty? or params[:name].present?
       #solo por nombre
-     @animals=Animal.search_name(params[:name]).paginate(:per_page=>1, :page=>params[:page]) unless params[:name].empty? or params[:document].present?
+    # @animals=Animal.search_name(params[:name]).paginate(:per_page=>1, :page=>params[:page]) unless params[:name].empty? or params[:document].present?
+     @animals = Animal.search(params[:name],params[:document]).paginate(:per_page=>1, :page=>params[:page])
      @animals||=[]
      respond_to do |format|
         format.html # search.html.erb

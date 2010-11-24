@@ -9,51 +9,55 @@
     </div>
   <% end %>
 <div>
-	<%= f.label :name%>
+	<div><%= f.label :name%></div>
 	<%= f.text_field :name %>
 </div>
 
 <div>
-  <%= f.label :birthDay%>
+  <div><%= f.label :birthDay%></div>
 	<%= f.date_select :birthDay%>
 </div>
 
 <div>
-     <%= f.label :sex%>
+  <div> <%= f.label :sex%></div>
+    
      Female<%= f.radio_button :sex, 'f', :checked=>true%>
      Male<%= f.radio_button :sex, 'true'%>
 </div>
 
 <div>
-  <%= f.label :description%>
+  <div> <%= f.label :description%></div>
+ 
 	<%= f.text_area :description, :cols => 20, :rows => 10%>
 </div>
 
 <div>
-	<%= f.label :spayed%>
-	<div>
+  <div><%= f.label :spayed%></div>
 	   No<%= f.radio_button :spayed, 'false'%> 
 		 Si<%= f.radio_button :spayed, 'true'%>
-	</div>
 </div>
 
 <div>
+  <div></div>
 	<%= f.label :diet%>
 	<%= f.text_area :diet, :cols => 20, :rows => 10%>
 </div>
 
 <div>
+  <div></div>
 	<%= f.label :habitat%>
 	<%= f.text_field :habitat %>
 </div>
 
 <div>
-  <%= f.label :breed_id%>
+  <div><%= f.label :breed_id%></div>
+  
 	<%= Breeds_for_select f %>
 </div>
 
 <div>
-  <%= f.label :client_id%>
+  <div> <%= f.label :client_id%></div>
+ 
 	<%= Clients_for_select f%>
 </div>
 

@@ -25,5 +25,11 @@ class Breed < ActiveRecord::Base
 	  joins(:species).where("species.name LIKE ? and breeds.name LIKE ?", "%#{specie}%","%#{name}%" )
 	end
 	
+	def self.search(name,specie)
+	  r=joins(:species).where("species.name LIKE ?", "%#{specie}%") unless specie.empty? or name.present?
+	  r=where("name LIKE ?", "%#{name}%") unless name.empty? or specie.present?  
+	  r=joins(:species).where("species.name LIKE ? and breeds.name LIKE ?", "%#{specie}%","%#{name}%" ) unless name.empty? or specie.empty? 
+	  return r||=[]
+	end
 	
 end

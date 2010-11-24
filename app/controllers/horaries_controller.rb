@@ -90,12 +90,13 @@ load_and_authorize_resource
      #@consulta= Consulta.new(:date=>'') unless params[:consulta]
      #@consulta||=Consulta.new(params[:consulta])
      #por nombre y fecha
-     @horaries=Horary.search_doctor_and_date(params[:doctor], params[:date]).paginate(:per_page=>5, :page=>params[:page]) unless (params[:doctor].empty? or params[:date].empty?)
-    # @horaries||=[]
+     #@horaries=Horary.search_doctor_and_date(params[:doctor], params[:date]).paginate(:per_page=>5, :page=>params[:page]) unless (params[:doctor].empty? or params[:date].empty?)
+     #@horaries||=[]
      #solo por nombre
-     @horaries=Horary.search_doctor(params[:doctor]).paginate(:per_page=>5, :page=>params[:page]) unless params[:doctor].empty? or params[:date].present?
+     #@horaries=Horary.search_doctor(params[:doctor]).paginate(:per_page=>5, :page=>params[:page]) unless params[:doctor].empty? or params[:date].present?
      #solo por fecha
-     @horaries=Horary.search_date(params[:date]).paginate(:per_page=>5, :page=>params[:page]) unless params[:date].empty? or params[:doctor].present?
+     #@horaries=Horary.search_date(params[:date]).paginate(:per_page=>5, :page=>params[:page]) unless params[:date].empty? or params[:doctor].present?
+     @horaries=Horary.search(params[:doctor], params[:date]).paginate(:per_page=>5, :page=>params[:page])
      @horaries||=[]
 
     

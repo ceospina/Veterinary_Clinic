@@ -25,8 +25,9 @@ load_and_authorize_resource
     end
 	end
 	
-  def create
+  def create    
 		@consulta = Consulta.new(params[:consulta])
+
 		respond_to do |format|
       if @consulta.save
         format.html { redirect_to(@consulta, :notice => 'Consulta was successfully created.') }
@@ -43,7 +44,8 @@ load_and_authorize_resource
   end
 	
 	def update
-		@consulta = Consulta.find(params[:id])		
+		@consulta = Consulta.find(params[:id])	
+
 		respond_to do |format|
       if @consulta.update_attributes(params[:consulta])
         format.html { redirect_to(@consulta, :notice => 'Consulta was successfully updated.') }
@@ -75,11 +77,11 @@ load_and_authorize_resource
      params[:nameAnimal]||=[]
      params[:date]||=[]
      
-     @consultas=Consulta.search_animal_and_date(params[:nameAnimal], params[:date]).paginate(:per_page=>1, :page=>params[:page]) unless (params[:nameAnimal].empty? or params[:date].empty?)
-     @consultas=Consulta.search_animal(params[:nameAnimal]).paginate(:per_page=>1, :page=>params[:page]) unless params[:nameAnimal].empty? or params[:date].present?   
+     #@consultas=Consulta.search_animal_and_date(params[:nameAnimal], params[:date]).paginate(:per_page=>1, :page=>params[:page]) unless (params[:nameAnimal].empty? or params[:date].empty?)
+     #@consultas=Consulta.search_animal(params[:nameAnimal]).paginate(:per_page=>1, :page=>params[:page]) unless params[:nameAnimal].empty? or params[:date].present?   
      #solo por fecha
-     @consultas=Consulta.search_date(params[:date]).paginate(:per_page=>1, :page=>params[:page]) unless params[:date].empty? or params[:nameAnimal].present?
-     
+     #@consultas=Consulta.search_date(params[:date]).paginate(:per_page=>1, :page=>params[:page]) unless params[:date].empty? or params[:nameAnimal].present?
+     @consultas=Consulta.search(params[:nameAnimal], params[:date]).paginate(:per_page=>1, :page=>params[:page])
      @consultas||=[]
     
         

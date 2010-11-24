@@ -27,10 +27,10 @@
             <ul>
               <li><%= link_to "Roles", roles_path , :class=> "parent"%></li>
               <li>
-                <%= link_to "Usuarios", users_path , :class=> "parent"%>
+                <%= link_to "Users", users_path , :class=> "parent"%>
                 <div>
                 <ul>
-                  <li><%= link_to "Enviar Correo", correo_users_path, :class=> "parent"%></li>
+                  <li><%= link_to "Send Email", correo_users_path, :class=> "parent"%></li>
                 </ul>
                 </div>
                </li>
@@ -41,12 +41,12 @@
          
          <% if can? :read, :all  %>
            
-         <li><a href = "#" class = "parent">Registro</a>
+         <li><a href = "#" class = "parent">Register</a>
             <div>
               <ul>
-                <li> <%= link_to "Animales", animals_path, :class=> "parent"%></li>  
-                <li><%= link_to "Clientes", clients_path, :class=> "parent"%></li>
-                <li><%= link_to "Doctores", doctors_path, :class=> "parent"%></li>
+                <li> <%= link_to "Animals", animals_path, :class=> "parent"%></li>  
+                <li><%= link_to "Clients", clients_path, :class=> "parent"%></li>
+                <li><%= link_to "Doctors", doctors_path, :class=> "parent"%></li>
               </ul>
             </div>
           </li>
@@ -54,26 +54,25 @@
             <div>
               <ul>
                 <li><%= link_to "Consultas", consultas_path, :class=> "parent"%></li>
-                <li><%= link_to "Tipos consulta", type_consults_path, :class=> "parent"%></li>
-                <li><a href = "#" class = "parent">Historia Clinica</a></li>
-              </ul>
-            </div>
-          </li>
-          
-          <li><a href = "#" class = "parent">Citas</a>
-            <div>
-              <ul>
-                <li><%= link_to "Horarios", horaries_path, :class=> "parent"%></li>
-                <li><%= link_to "Citas", meetings_path, :class=> "parent"%></li>
+                <li><%= link_to "Type consulta", type_consults_path, :class=> "parent"%></li>
                </ul>
             </div>
           </li>
           
-          <li><a href = "#" class = "parent">Especies</a>
+          <li><a href = "#" class = "parent">Horaries</a>
             <div>
               <ul>
-                <li><%= link_to "Especies", species_index_path, :class=> "parent"%></li>
-                <li><%= link_to "Razas", breeds_path, :class=> "parent"%></li>
+                <li><%= link_to "Horaries", horaries_path, :class=> "parent"%></li>
+                <li><%= link_to "Meetings", meetings_path, :class=> "parent"%></li>
+               </ul>
+            </div>
+          </li>
+          
+          <li><a href = "#" class = "parent">Species</a>
+            <div>
+              <ul>
+                <li><%= link_to "Species", species_index_path, :class=> "parent"%></li>
+                <li><%= link_to "Breeds", breeds_path, :class=> "parent"%></li>
                </ul>
             </div>
           </li>
@@ -88,12 +87,17 @@
           <li>
             <%= link_to "Services", pages_servicios_path, :class=> "parent"%>    
             <div>
-                <ul>               
-                  <li><%= link_to "Citas", '#', :class=> "parent"%></li>
+                <ul>  
+                    <%if can? :update, Meeting%>           
+                  <li><%= link_to "Meetings", empty_meetings_path, :class=> "parent"%></li>
+                  <%end%>
+                   <%if can? :update, User%>
+                  <li><%= link_to "Edit User", users_path, :class=> "parent"%></li>
+                  <%end%>
                  </ul>
             </div>  
           </li>
-          <li><%= link_to "Clasificados", pages_clasificados_path, :class=> "parent" %></li>     
+          <li><%= link_to "Newspaper", pages_clasificados_path, :class=> "parent" %></li>     
     <%end%> 
     
 

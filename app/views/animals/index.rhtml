@@ -1,11 +1,11 @@
-      <h3>Lista de animales, metodo index</h3>
+      <h3>Animal List</h3>
     <table id="index">
       <tr>
-        <th>Nombre</th>
-        <th>Fecha Nacimiento</th>
-        <th>Sexo</th>
-        <th>Dueno</th>
-        <th>Raza</th>		  
+        <th>Name</th>
+        <th>Born On</th>
+        <th>Sex</th>
+        <th>Owner</th>
+        <th>Breed</th>		  
       </tr>
       <% @animals.each do |animal|%>
         <tr>
@@ -31,6 +31,8 @@
 		<% if can? :create, Animal  %>
 		<%= link_to "Nuevo animal", new_animal_path%> |
 		<%end%>
-	  <%= link_to "Buscar animal", search_animals_path%>
-
+		<% if can? :update, Animal  %>
+	   <%= link_to "Buscar animal", search_animals_path%>
+    <%end%>
+    
 	</div>

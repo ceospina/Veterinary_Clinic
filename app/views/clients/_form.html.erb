@@ -12,17 +12,17 @@
   <% end %>
   
 <div>
-  <div>Nombre:</div>
+  <div>Name:</div>
   <%= f.text_field :name %>
 </div>
 
 <div>
-  <div>Apellido:</div>
+  <div>Last Name:</div>
   <%= f.text_field :lastName %>
 </div>
 
 <div>
-  <div>Documento:</div>
+  <div>Document:</div>
   <%= f.text_field :idDocument %>
 </div>
 
@@ -33,25 +33,25 @@
   </div>
 
 <div>
-  <div>Telefono:</div>
+  <div>Phone:</div>
   <%= f.text_field :phoneHome%>
 </div>
 
 <div>
-  <div>Celular:</div>
+  <div>Cell:</div>
   <%= f.text_field :phoneCell%>
 </div>
 
 <div>
-  <div>Direccion:</div>
+  <div>Adress:</div>
   <%= f.text_field :address%>
 </div>
 
 <div>
-  <div>Dueño:</div>
+  <div>Owner:</div>
   <div>No
     <%= f.radio_button :isowner, false%>
-    Si
+    Yes
     <%= f.radio_button :isowner, true%>
   </div>
 </div>

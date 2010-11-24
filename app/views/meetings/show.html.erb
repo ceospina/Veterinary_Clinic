@@ -12,4 +12,6 @@
 <hr>
 
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
+<%if can? :manage, :all%>
 <%= link_to 'Back', meetings_path %>
+<%end%>

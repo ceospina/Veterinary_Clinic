@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
-before_filter :authenticate_user!, :except => [:show, :index]
-load_and_authorize_resource
+before_filter :authenticate_user!
+load_and_authorize_resource  :only => [ :index,:edit,:update,:empty]
   # GET /meetings
   # GET /meetings.xml
   def index

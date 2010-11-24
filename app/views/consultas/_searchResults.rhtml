@@ -7,6 +7,12 @@
             <li><%= consulta.doctor.name %></li>
             <li><%= consulta.date %></li>
             <li><%= link_to "Show", consulta %> </li>
+            <%if can? :update, Consulta%>
+           <td><%= link_to  "Edit", edit_consulta_path(consulta) %></td> 
+          <%end%> 
+          <%if can? :destroy, Consulta%>
+           <td><%= link_to "Delete", consulta, :confirm => "Are you sure?", :method=>:delete %></td>
+          <%end%>
           </ul>
         </div>
     <% end %>

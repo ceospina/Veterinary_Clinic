@@ -1,21 +1,31 @@
-<h1>Listing species</h1>
+<h1>List</h1>
 
 <table id = "index">
   <tr>
-    <th>Nombre</th>
+    <th>Name</th>
   </tr>
 
 <% @species.each do |specie| %>
   <tr>
     <td><%= specie.name %></td>
     <td><%= link_to 'Show', species_path(specie) %></td>
+	  <% if can? :update, Species%>
     <td><%= link_to 'Edit', edit_species_path(specie) %></td>
+    <% end%>
+    <% if can? :destroy, Species%>
     <td><%= link_to 'Destroy', species_path(specie), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+    <% end%>
+    
+    </tr>
 <% end %>
-</table>
+  </table>
 
 <br />
 
+<% if can? :create, Species%>
 <%= link_to 'New Specie', new_species_path %>
+<% end%>
+<% if can? :create, Species%>
 | <%= link_to 'Buscar', search_species_index_path %>
+<% end%>
+

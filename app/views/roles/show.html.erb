@@ -2,10 +2,10 @@
 <hr>
 <div id="show">
   <%= image_tag "logoCUL.bmp", {:style => "float:right;"} %> 
-  <h4>Nombre: </h4><p><%= @role.name %>
-  <h4>descripcion: </h4><p><%= @role.description%>
+  <h4>Name: </h4><p><%= @role.name %>
+  <h4>descritcion: </h4><p><%= @role.description%>
   </div>
 <hr>
 
-<%= link_to 'Editar', edit_role_path(@role) %> |
-<%= link_to 'Atras', roles_path %>
+<%= link_to 'Edit', edit_role_path(@role) %> |
+<%= link_to 'Back', roles_path %>

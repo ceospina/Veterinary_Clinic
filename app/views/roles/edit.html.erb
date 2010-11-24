@@ -1,6 +1,9 @@
-<h1>Editar rol</h1>
+<h1>Edit</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Ver', @role %> |
-<%= link_to 'Atras', roles_path %>
+<% if can? :manage, :all%>
+	<%= link_to 'Show', @role %> |
+<% end%>
+
+<%= link_to 'Back', roles_path %>

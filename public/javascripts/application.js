@@ -21,4 +21,4 @@ $(function () {
 });   
 $(function() {$( "#accordion" ).accordion({event: "mouseover"});});
 //efecto datepicker
-$(function() {$( "#datepicker" ).datepicker();});
+$(function() {$( "#datepicker, #date2, #date3, #date4" ).datepicker();});

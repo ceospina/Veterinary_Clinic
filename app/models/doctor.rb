@@ -33,4 +33,12 @@ class Doctor < ActiveRecord::Base
   def self.for_name_and_cedula(name,cedula)
     where("name LIKE ? and idDocument LIKE ?","%#{name}%","%#{cedula}%")
   end
+  
+  def self.search(name,document)
+    r=where("name LIKE ?","%#{name}%") unless name.empty? or document.present?
+    r=where("idDocument LIKE ?","%#{document}%")  unless document.empty? or name.present?
+    r=where("name LIKE ? and idDocument LIKE ?","%#{name}%","%#{document}%") unless name.empty? or document.empty?
+    return r||=[]
+  end
+  
 end

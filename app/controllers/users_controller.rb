@@ -2,7 +2,7 @@ class UsersController < ApplicationController
  # before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :get_user, :only => [:index,:new,:edit]
   before_filter :accessible_roles, :only => [:new, :edit, :show, :update, :create]
-  load_and_authorize_resource :only => [:show,:new,:destroy,:edit,:update]
+  load_and_authorize_resource :only => [:show,:new,:destroy,:edit,:update,:correo]
 
   def accessible_roles
     @accessible_roles = Role.accessible_by(current_ability,:read)
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
-    params[:user][:role_ids] ||= []  
+    params[:user][:role_ids] ||= [3]  
     @user = User.new(params[:user])
     
     respond_to do |format|
@@ -80,7 +80,7 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
  def update
-   params[:user][:role_ids] ||= []  
+   params[:user][:role_ids] ||= [3]  
     if params[:user][:password].blank?
       [:password,:password_confirmation,:current_password].collect{|p| params[:user].delete(p) }
     else

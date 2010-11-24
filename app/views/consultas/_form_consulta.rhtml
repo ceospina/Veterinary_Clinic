@@ -18,41 +18,47 @@
 <div><div>Animal:</div>
   <%= Animals_for_select f%> <!--#f.select :category_id, Category.for_select#-->
 </div> 
-<div><div>Fecha:</div><%= f.date_select :date %></div>
+<div>
+<div>Fecha:</div>
+<%=f.text_field :date, :id=>'datepicker'%>(AAAA-MM-DD)
+</div>
 <div id="accordion">
-  <h3><a href="#">Sintomas, Alergias, Vacunas</a></h3>
+  <h3><a href="#">Medical Alert, Allergies , Vaccines</a></h3>
   <div>
-      <div>Sintomas:</div><%= f.text_area :medicalAlert, options ={:size => "30x10"} %> 
-      <div>Alergias:</div><%= f.text_area :allergies, options ={:size => "30x10"} %>
-      <div>Vacunas:</div><%= f.text_area :vaccines, options ={:size => "30x10"} %>
+      <div>Medical Alert:</div><%= f.text_area :medicalAlert, options ={:size => "30x10"} %> 
+      <div>Allergies:</div><%= f.text_area :allergies, options ={:size => "30x10"} %>
+      <div>Vaccines:</div><%= f.text_area :vaccines, options ={:size => "30x10"} %>
   </div>
   
-  <h3><a href="#">Examenes, Cirugias, Lesiones</a></h3>
+  <h3><a href="#">MedicalTest, Surgieres, Injuries</a></h3>
   <div>
-    <div>Examenes:</div><%= f.text_area :medicalTests, options ={:size => "30x10"} %> 
-    <div>Cirugias:</div><%= f.text_area :surgeries, options ={:size => "30x10"} %> 
-    <div>lesiones:</div><%= f.text_area :injuries, options ={:size => "30x10"} %>
+    <div>Medical Test:</div><%= f.text_area :medicalTests, options ={:size => "30x10"} %> 
+    <div>Surgeries:</div><%= f.text_area :surgeries, options ={:size => "30x10"} %> 
+    <div>Injuries:</div><%= f.text_area :injuries, options ={:size => "30x10"} %>
   </div>
 
-  <h3><a href="#">Peso, Temperatura, Ritmo Cardiaco, Pulso</a></h3>
+  <h3><a href="#">Weight, Temperature, Heart Rate, Pulse</a></h3>
   <div>
-    <div>Peso:</div><%= f.text_field :weight %>
-    <div>Temperatura:</div><%= f.text_field :temperature %> 
-    <div>Ritmo Cardiaco</div><%= f.text_field :heartRate %>
-    <div>Pulso</div><%= f.text_field :pulse %>
+    <div>Weight:</div><%= f.text_field :weight %>
+    <div>Temperature:</div><%= f.text_field :temperature %> 
+    <div>Heart Rate</div><%= f.text_field :heartRate %>
+    <div>Pulse</div><%= f.text_field :pulse %>
   </div>
   
-  <h3><a href="#">Fecha Ingreso, Fecha Alta, Fecha Muerte</a></h3>
+  <h3><a href="#">Date Admission, Discharge Date, Date Death</a></h3>
   <div>
-    <div>Fecha Ingreso:</div><%= f.date_select :dateAdmission %>
-    <div>Fecha Alta:</div><%= f.date_select :dischargeDate %>
-    <div>Fecha Muerte:</div><%= f.date_select :dateDeath %>
+    <div>Date Admission :</div>
+      <%=f.text_field :dateAdmission, :id=>'date2'%>(AAAA-MM-DD)     
+    <div>Discharge Date:</div>
+      <%=f.text_field :dischargeDate, :id=>'date3'%>(AAAA-MM-DD) 
+    <div>Date Death:</div>
+    <%=f.text_field :dateDeath, :id=>'date4'%>(AAAA-MM-DD)
   </div>
   
-   <h3><a href="#">Diagnostico, Tratamiento</a></h3>
+   <h3><a href="#">Diagnosis, Treatment</a></h3>
    <div>
-      <div>Diagnostico:</div><%= f.text_area :diagnosis, options ={:size => "30x10"} %>
-      <div>Tratamiento:</div><%= f.text_area :treatment, options ={:size => "30x10"} %> 
+      <div>Diagnosis:</div><%= f.text_area :diagnosis, options ={:size => "30x10"} %>
+      <div>Treatment:</div><%= f.text_area :treatment, options ={:size => "30x10"} %> 
   </div>
   
 </div>

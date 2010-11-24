@@ -24,5 +24,12 @@ class Consulta < ActiveRecord::Base
    #c = where('animal_id = ? and date = ?',a.first.id,date) unless a.empty?
    #c||=[]
   end
+  
+  def self.search(name, date)
+    r=joins(:animal).where('name like ?',"%#{name}%") unless name.empty? or date.present?   
+    r=where('date = ?', date) unless date.empty? or name.present?
+    r=joins(:animal).where("name like ? and date=?", "%#{name}%", date) unless name.empty? or date.empty?
+    return r||=[]
+  end
     
 end

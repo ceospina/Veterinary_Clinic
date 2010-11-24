@@ -13,6 +13,8 @@
   <h4>Doctor: </h4><p><%= @horary.doctor.name %>
   </div>
 <hr>
+   <%if can? :update, Horary%>
+    <%= link_to 'Edit', edit_horary_path(@horary) %> |
+    <%end%>
 
-<%= link_to 'Edit', edit_horary_path(@horary) %> |
 <%= link_to 'Back', horaries_path %>

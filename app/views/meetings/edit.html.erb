@@ -3,4 +3,7 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @meeting %> |
+<%if can? :manage, :all%>
 <%= link_to 'Back', meetings_path %>
+<%end%>
+

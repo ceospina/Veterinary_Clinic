@@ -1,27 +1,37 @@
-<h1>Listing horaries</h1>
+<h1>List</h1>
 
 <table id="index">
   <tr>
-    <th>Dia</th>
-    <th>Hora inicio</th>
-    <th>Hora final</th>
+    <th>Day</th>
+    <th>Start Time</th>
+    <th>Final Hour</th>
     <th>Doctor</th>
   </tr>
 
 <% @horaries.each do |horary| %>
   <tr>
     <td><%= horary.day%></td>
-    <td><%= "#{horary.startTime.hour}"+"-"+"#{horary.startTime.min}"+"-"+"#{horary.startTime.sec}"%></td>
-    <td><%= "#{horary.finalHour.hour}"+"-"+"#{horary.finalHour.min}"+"-"+"#{horary.finalHour.sec}"%></td> 
+    <td><%= horary.startTime.strftime("%I:%M %p")%></td>
+    <td> <%= horary.finalHour.strftime("%I:%M %p")%></td> 
     <td><%= horary.doctor.name %></td> 
     <td><%= link_to 'Show', horary %></td>
-    <td><%= link_to 'Edit', edit_horary_path(horary) %></td>
-    <td><%= link_to 'Destroy', horary, :confirm => 'Are you sure?', :method => :delete %></td>
+   <%if can? :update, Horary%>
+     <td><%= link_to 'Edit', edit_horary_path(horary) %></td>
+    <%end%>
+    <%if can? :destroy, Horary %>
+      <td><%= link_to 'Destroy', horary, :confirm => 'Are you sure?', :method => :delete %></td>
+    <%end%>
+    
   </tr>
 <% end %>
 </table>
 
 <br />
+<%if can? :create, Horary%>
+<%= link_to 'New Horary', new_horary_path %> |
 
-<%= link_to 'New Horary', new_horary_path %>
-| <%= link_to 'Buscar', search_horaries_path %>
+    <%end%>
+
+<%if can? :update, Horary%>
+<%= link_to 'Buscar', search_horaries_path %>
+    <%end%>

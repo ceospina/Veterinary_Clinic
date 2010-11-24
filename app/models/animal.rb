@@ -30,6 +30,13 @@ class Animal < ActiveRecord::Base
 	def self.search_name_and_client(name,document)
     joins(:client).where('animals.name LIKE ? and clients.idDocument LIKE ?', "%#{name}%", "%#{document}%" )
   end
+  
+  def self.search(name, document)
+    r=where("name LIKE ?", "%#{name}%") unless name.empty? or document.present?
+    r=joins(:client).where('idDocument LIKE ?',"%#{document}%" ) unless document.empty? or name.present?
+    r=joins(:client).where('animals.name LIKE ? and clients.idDocument LIKE ?', "%#{name}%", "%#{document}%" ) unless document.empty? or name.empty?  
+    return r||=[]
+  end
  
 	
 end

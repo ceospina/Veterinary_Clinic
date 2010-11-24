@@ -1,11 +1,11 @@
-<h3>Buscar Especie</h3>
+<h3>Search</h3>
   <%form_for :species, :url => search_species_index_path, :html => {:method => :get, :id => "search"}  do |f|%>
 
       
       
-      <div>Nombre
+      <div>Name
          <input type="text" size="25"  name="name"> 
-         <%= f.submit 'Buscar'%>
+         <%= f.submit %>
       </div>
               
  <%end%>

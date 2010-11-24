@@ -9,6 +9,11 @@ gem 'jquery-rails', '>=0.2.5'
 gem 'will_paginate', '3.0.pre2'
 gem "meta_where" 
 gem 'meta_search'
+group :development do
+  gem 'rspec-rails', '2.0.1'
+  gem 'annotate-models', '1.0.4'
+end
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

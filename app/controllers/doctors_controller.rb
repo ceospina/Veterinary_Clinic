@@ -89,13 +89,14 @@ load_and_authorize_resource
      
 
      #por nombre y fecha
-     @doctors=Doctor.for_name_and_cedula(params[:name],params[:document]).paginate(:per_page=>5, :page=>params[:page]) unless (params[:name].empty? or params[:document].empty?)
-     @doctors||=[]
+     #@doctors=Doctor.for_name_and_cedula(params[:name],params[:document]).paginate(:per_page=>5, :page=>params[:page]) unless (params[:name].empty? or params[:document].empty?)
+     #@doctors||=[]
      #solo por nombre
-     @doctors=Doctor.for_name(params[:name]).paginate(:per_page=>5, :page=>params[:page]) unless params[:name].empty? or params[:document].present?
+     #@doctors=Doctor.for_name(params[:name]).paginate(:per_page=>5, :page=>params[:page]) unless params[:name].empty? or params[:document].present?
      #solo por cedula
-     @doctors=Doctor.for_cedula(params[:document]).paginate(:per_page=>5, :page=>params[:page]) unless params[:document].empty? or params[:name].present?
-     
+     #@doctors=Doctor.for_cedula(params[:document]).paginate(:per_page=>5, :page=>params[:page]) unless params[:document].empty? or params[:name].present?
+     @doctors=Doctor.search(params[:name],params[:document]).paginate(:per_page=>5, :page=>params[:page]) 
+     @doctors||=[]
      
     
         

@@ -3,10 +3,13 @@
 <hr>
 <div id="show">
   <%= image_tag "logoCUL.bmp", {:style => "float:right;"} %> 
-  <h4>Nombre: </h4><p><%= @specie.name %>
-  <h4>descripcion: </h4><p><%= @specie.description %>
+  <h4>Name: </h4><p><%= @specie.name %>
+  <h4>description: </h4><p><%= @specie.description %>
 </div>
 <hr>
 
-<%= link_to 'Edit', edit_species_path(@species) %> |
+	<% if can? :update, Species%>
+	<%= link_to 'Edit', edit_species_path(@species) %> |
+  <% end%>
+
 <%= link_to 'Back', species_index_path %>

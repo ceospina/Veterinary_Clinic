@@ -1,10 +1,10 @@
-<h1>Listing doctors</h1>
+<h1>List</h1>
 
 <table id = "index">
   <tr>
-    <th>Nombre</th>
-    <th>Apellido</th>
-    <th>Especialidad</th>
+    <th>Name</th>
+    <th>Last Name</th>
+    <th>Speciality</th>
 
   </tr>
 
@@ -15,13 +15,23 @@
     <td><%= doctor.speciality%></td>
 
     <td><%= link_to 'Show', doctor %></td>
-    <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
-    <td><%= link_to 'Destroy', doctor, :confirm => 'Are you sure?', :method => :delete %></td>
+    <%if can? :update, Doctor%>
+      <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
+    <%end%>
+    <%if can? :destroy, Doctor%>
+      <td><%= link_to 'Destroy', doctor, :confirm => 'Are you sure?', :method => :delete %></td>
+    <%end%>
+    
   </tr>
 <% end %>
 </table>
 
 <br />
+<%if can? :create, Doctor%>
+<%= link_to 'New Doctor', new_doctor_path %> | 
+<%end%>
 
-<%= link_to 'New Doctor', new_doctor_path %>
-| <%= link_to 'Buscar', search_doctors_path %>
+    <%if can? :update, Doctor%>
+    | <%= link_to 'Search', search_doctors_path %>
+    <%end%>
+

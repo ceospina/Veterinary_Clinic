@@ -58,6 +58,13 @@ class Horary < ActiveRecord::Base
   
   def self.search_doctor_and_date(doctor,date)
     joins(:doctor).where("doctors.name LIKE ? and day =?","%#{doctor}%",date)
+  end
+  
+  def self.search(doctor,date)
+    r=joins(:doctor).where("doctors.name LIKE ?","%#{doctor}%") unless doctor.empty? or date.present?
+    r=where("day = ?",date) unless date.empty? or doctor.present?
+    r=joins(:doctor).where("doctors.name LIKE ? and day =?","%#{doctor}%",date) unless doctor.empty? or date.empty?
+    return r||=[]
   end  
   
 end

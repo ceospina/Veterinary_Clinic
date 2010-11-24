@@ -37,5 +37,12 @@ class Client < ActiveRecord::Base
   def self.for_name_and_cedula(name,cedula)
     where("name like ? and idDocument like ?", "%#{name}%", "%#{cedula}%" )
   end
+  
+  def self.search(name,document)
+    r=where("idDocument LIKE ?", "%#{document}%") unless document.empty? or name.present?
+    r=where("name LIKE ?", "%#{name}%") unless name.empty? or document.present?
+    r=where("name like ? and idDocument like ?", "%#{name}%", "%#{document}%") unless name.empty? or document.empty?
+    return r||=[]
+  end
 
 end

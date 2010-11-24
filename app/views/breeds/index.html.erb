@@ -1,23 +1,39 @@
-<h1>Listing breeds</h1>
+<h1>List</h1>
 
 <table id = "index">
   <tr>
-    <th>Nombre</th>
-    <th>Especie</th>
+    <th>Name</th>
+    <th>Specie</th>
   </tr>
 
 <% @breeds.each do |breed| %>
   <tr>
     <td><%= breed.name %></td>
-    <td><%= breed.species.name%></td> 
-    <td><%= link_to 'Show', breed %></td>
-    <td><%= link_to 'Edit', edit_breed_path(breed) %></td>
-    <td><%= link_to 'Destroy', breed, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= breed.species.name%></td>
+    <% if can? :read, Breed%>
+     <td><%= link_to 'Show', breed %></td>
+    <% end%> 
+    <% if can? :update, Breed%>
+      <td><%= link_to 'Edit', edit_breed_path(breed) %></td>
+    <% end%> 
+    <% if can? :destroy, Breed%>
+     <td><%= link_to 'Destroy', breed, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end%> 
+    
+   
   </tr>
 <% end %>
 </table>
 
 <br/>
-
+<% if can? :create, Breed%>
 <%= link_to 'New Breed', new_breed_path %>
+<% end%>
+
+<% if can? :update, Breed%>
 | <%= link_to 'Buscar', search_breeds_path %>
+<% end%>
+
+
+
+

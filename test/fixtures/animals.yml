@@ -4,12 +4,7 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-SinRazaConCliente:
-	name: 'rocco'
-	sex: true
-	description: 'feo'
-	spayed: true
-	breed_id: null
-	client_id: 1
-	
+#sin raza con cliente
+
+
 	

@@ -120,8 +120,15 @@ footer nav {
 /*flash*/
 
 #flash_notice, #flash_error {
-  padding: 5px 8px;
+  /*padding: 5px 8px;
   margin-left: 50px;
+  */
+      width: 25em;
+      padding: 0 4em;
+      margin: 0em auto 2em auto;
+      border: 1px solid #ccc;
+      border-right-color: #999;
+      border-bottom-color: #999;
 }
 
 #flash_notice {

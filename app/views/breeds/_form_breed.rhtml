@@ -10,16 +10,19 @@
   <% end %>
 <div>
 	<%= f.label :name%>
+	<br>
 	<%= f.text_field :name %>	
 </div>
 
 <div>
   <%= f.label :description%><br>
+  <br>
   <%= f.text_area :description, :cols => 20, :rows => 10 %>
 </div>
 
 <div>
 	<%= f.label :specie_id%>
+	<br>
 	<%= Species_for_select f %>
 </div>
 

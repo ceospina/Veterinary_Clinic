@@ -6,12 +6,12 @@
             <li><%= breed.name %></li>
             <li><%= breed.description%></li>
             <li><%= link_to 'Show', breed %> 
-             <%if can? :update, Breed%>
+
               | <%= link_to 'Edit', edit_breed_path(breed) %>
-             <%end%>
-             <%if can? :destroy, Breed%>
+
+
               | <%= link_to 'Destroy', breed, :confirm => 'Are you sure?', :method => :delete %>
-             <%end%>
+
              </li>
           </ul>
         </div>
